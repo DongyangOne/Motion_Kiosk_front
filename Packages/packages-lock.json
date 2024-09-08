@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "com.unity.2d.animation": {
       "version": "9.1.1",
       "depth": 1,
@@ -57,15 +56,12 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> 3fbbfae6414937149529236f16373dae282a5c98
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 1,
       "source": "builtin",
       "dependencies": {}
     },
-<<<<<<< HEAD
     "com.unity.2d.spriteshape": {
       "version": "9.0.3",
       "depth": 1,
@@ -230,8 +226,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> 3fbbfae6414937149529236f16373dae282a5c98
     "com.unity.textmeshpro": {
       "version": "3.0.9",
       "depth": 0,
@@ -241,7 +235,6 @@
       },
       "url": "https://packages.unity.com"
     },
-<<<<<<< HEAD
     "com.unity.timeline": {
       "version": "1.7.6",
       "depth": 0,
@@ -254,8 +247,6 @@
       },
       "url": "https://packages.unity.com"
     },
-=======
->>>>>>> 3fbbfae6414937149529236f16373dae282a5c98
     "com.unity.ugui": {
       "version": "1.0.0",
       "depth": 0,
@@ -270,19 +261,6 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {
-<<<<<<< HEAD
-        "com.unity.2d.sprite": "1.0.0",
-        "com.unity.ugui": "1.0.0",
-        "com.unity.modules.animation": "1.0.0",
-        "com.unity.modules.imageconversion": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.modules.physics2d": "1.0.0",
-        "com.unity.modules.ui": "1.0.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.modules.unitywebrequesttexture": "1.0.0",
-        "com.unity.modules.unitywebrequestwww": "1.0.0"
-=======
         "com.unity.ugui": "1.0.0",
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.ui": "1.0.0",
@@ -294,7 +272,6 @@
         "com.unity.modules.unitywebrequest": "1.0.0",
         "com.unity.modules.unitywebrequestwww": "1.0.0",
         "com.unity.modules.unitywebrequesttexture": "1.0.0"
->>>>>>> 3fbbfae6414937149529236f16373dae282a5c98
       },
       "url": "https://packages.unity.com"
     },
