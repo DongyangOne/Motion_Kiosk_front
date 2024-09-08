@@ -33,7 +33,6 @@ public class CategoryDataManager : MonoBehaviour {
         newObject.name = "CategoryPage" + objectName;
         return newObject;
     }
-
     private GameObject CreateMenuPage(GameObject parent, string objectName) {
         GameObject newObject = Instantiate(menuPage, parent.transform);
         newObject.name =  "MenuPage" + objectName;
@@ -67,7 +66,7 @@ public class CategoryDataManager : MonoBehaviour {
                     UIModal modalController = modalObject.GetComponent<UIModal>();
                     if (modalController != null)
                     {
-                        modalController.OpenModal(cellData.name);
+                        modalController.OpenModal(cellData.name, cellData.price, cellData.imageURL);
                     }
                     else
                     {

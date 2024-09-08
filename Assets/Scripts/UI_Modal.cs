@@ -15,15 +15,18 @@ public class UIModal : MonoBehaviour {
         transform.gameObject.SetActive(false);
     }
 
-    public void OpenModal(string menuName) {
+    public void OpenModal(string menuName, int menuPrice, string imageURL) {
         Debug.Log("OpenModal");
         ResetModal();
         
         transform.gameObject.SetActive(true);
 
         title.text = menuName;
-        Sprite image = Resources.Load<Sprite>("Menu/" + menuName);
-        menuImage.sprite = image;
+        price.text = menuPrice.ToString();
+        Sprite image = Resources.Load<Sprite>("Menu/" + imageURL);
+        if (image != null) {
+            menuImage.sprite = image;
+        }
     }
 
     public void CloseModal() {
