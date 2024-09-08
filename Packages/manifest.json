@@ -1,6 +1,5 @@
 {
   "dependencies": {
-<<<<<<< HEAD
     "com.unity.collab-proxy": "2.4.3",
     "com.unity.feature.2d": "2.0.0",
     "com.unity.ide.rider": "3.0.28",
@@ -9,9 +8,7 @@
     "com.unity.test-framework": "1.1.33",
     "com.unity.textmeshpro": "3.0.9",
     "com.unity.timeline": "1.7.6",
-=======
     "com.unity.textmeshpro": "3.0.9",
->>>>>>> 3fbbfae6414937149529236f16373dae282a5c98
     "com.unity.ugui": "1.0.0",
     "com.unity.vectorgraphics": "2.0.0-preview.24",
     "com.unity.visualscripting": "1.9.4",
