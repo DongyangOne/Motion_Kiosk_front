@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Amount : MonoBehaviour, ModalReset {
+public class Amount : MonoBehaviour {
     private int amount;
 
     public TextMeshProUGUI amountText;

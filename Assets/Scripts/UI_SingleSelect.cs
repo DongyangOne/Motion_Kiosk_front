@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UISingleSelect : MonoBehaviour, ModalReset {
+public class UISingleSelect : MonoBehaviour {
 
     public Color selectedBackground;
     public Color selectedColor;

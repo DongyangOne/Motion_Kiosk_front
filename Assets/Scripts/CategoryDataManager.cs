@@ -113,11 +113,11 @@ public class CategoryDataManager : MonoBehaviour {
         };
         coffee.menu.AddRange(
             new MenuData[] {
-                new MenuData { name = "아메리카노", price = 4500, imageURL = "americano" },
-                new MenuData { name = "에스프레소", price = 4000, imageURL = "espresso" },
-                new MenuData { name = "카페라떼", price = 4500, imageURL = "cafelatte" },
-                new MenuData { name = "카페모카", price = 5000, imageURL = "cafemocha" },
-                new MenuData { name = "바닐라라떼", price = 5000, imageURL = "vanillalatte" }
+                new MenuData { name = "아메리카노", price = 2000, imageURL = "americano" },
+                new MenuData { name = "에스프레소", price = 1500, imageURL = "espresso" },
+                new MenuData { name = "카페라떼", price = 3000, imageURL = "cafelatte" },
+                new MenuData { name = "카페모카", price = 3000, imageURL = "cafemocha" },
+                new MenuData { name = "바닐라라떼", price = 3000, imageURL = "vanillalatte" }
             }
         );
         categoryList.Add(coffee);
@@ -132,7 +132,7 @@ public class CategoryDataManager : MonoBehaviour {
                 new MenuData { name = "케모마일", price = 2000, imageURL = "chamomile" },
                 new MenuData { name = "얼그레이", price = 2000, imageURL = "earlgrey" },
                 new MenuData { name = "쟈스민", price = 2000, imageURL = "jasmine" },
-                new MenuData { name = "페퍼민트", price = 1500, imageURL = "peppermint" }
+                new MenuData { name = "페퍼민트", price = 2000, imageURL = "peppermint" }
             }
         );
         
@@ -144,11 +144,11 @@ public class CategoryDataManager : MonoBehaviour {
         };
         drink.menu.AddRange(
             new MenuData[] {
-                new MenuData { name = "자몽", price = 2000, imageURL = "grapefruit" },
-                new MenuData { name = "자몽얼그레이", price = 2000, imageURL = "grapefruitearlgrey" },
-                new MenuData { name = "허니레몬", price = 2000, imageURL = "honeylemon" },
-                new MenuData { name = "레몬", price = 1500, imageURL = "lemon" },
-                new MenuData { name = "녹차라떼", price = 1500, imageURL = "greentealatte" },
+                new MenuData { name = "자몽", price = 3500, imageURL = "grapefruit" },
+                new MenuData { name = "자몽얼그레이", price = 3500, imageURL = "grapefruitearlgrey" },
+                new MenuData { name = "허니레몬", price = 3500, imageURL = "honeylemon" },
+                new MenuData { name = "레몬", price = 3500, imageURL = "lemon" },
+                new MenuData { name = "녹차라떼", price = 2000, imageURL = "greentealatte" },
             }
         );
         categoryList.Add(drink);
@@ -183,27 +183,6 @@ public class CategoryDataManager : MonoBehaviour {
             categoryName = "디져트",
             menu = new List<MenuData>()
         };
-        dessert.menu.AddRange(
-            new MenuData[] {
-                new MenuData { name = "디져트1", price = 2000, imageURL = "dessert1" },
-                new MenuData { name = "디져트2", price = 2000, imageURL = "dessert2" },
-                new MenuData { name = "디져트3", price = 2000, imageURL = "dessert3" },
-                new MenuData { name = "디져트4", price = 2000, imageURL = "dessert4" },
-            }
-        );
-        categoryList.Add(dessert);
-        CategoryData dessert3 = new CategoryData {
-            categoryName = "디져트",
-            menu = new List<MenuData>()
-        };
-        dessert.menu.AddRange(
-            new MenuData[] {
-                new MenuData { name = "디져트1", price = 2000, imageURL = "dessert1" },
-                new MenuData { name = "디져트2", price = 2000, imageURL = "dessert2" },
-                new MenuData { name = "디져트3", price = 2000, imageURL = "dessert3" },
-                new MenuData { name = "디져트4", price = 2000, imageURL = "dessert4" },
-            }
-        );
         categoryList.Add(dessert);
     }
     
@@ -252,9 +231,6 @@ public class CategoryDataManager : MonoBehaviour {
         Transform categoryContainer = transform.Find("CategoryContainer");
         RectTransform categoryContainerRect = categoryContainer.GetComponent<RectTransform>();
         LayoutRebuilder.ForceRebuildLayoutImmediate(categoryContainerRect);
-        
-        Debug.Log("category:"+categoryRect.localPosition);
-        Debug.Log("pos:"+categoryRect.position);
 
         UICarousel categoryCarousel = transform.GetComponent<UICarousel>();
         categoryCarousel.ResetCarousel();

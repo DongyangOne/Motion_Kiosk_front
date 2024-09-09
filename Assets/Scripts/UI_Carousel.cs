@@ -22,7 +22,6 @@ public class UICarousel : MonoBehaviour, ModalReset
 
     public Button previousBtn;
     public Button nextBtn;
-    public bool inModal;
     
     
 
@@ -105,7 +104,6 @@ public class UICarousel : MonoBehaviour, ModalReset
     }
 
     public void ModalOptionReset() {
-        if (!inModal) return;
         SetPage(1);
         ChangeBtnState();
     }

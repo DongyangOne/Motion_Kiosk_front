@@ -98,8 +98,6 @@ public class NavDataManager : MonoBehaviour {
         RectTransform navContainerRect = navContainer.GetComponent<RectTransform>();
         LayoutRebuilder.ForceRebuildLayoutImmediate(navContainerRect);
         
-        
-
         UICarousel navCarousel = transform.GetComponent<UICarousel>();
         navCarousel.ResetCarousel();
     }
