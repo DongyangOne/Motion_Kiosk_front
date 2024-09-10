@@ -4,34 +4,44 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Amount : MonoBehaviour {
-    private int amount;
+namespace amount
+{
+    public class Amount : MonoBehaviour
+    {
+        private int amount;
 
-    public TextMeshProUGUI amountText;
+        public TextMeshProUGUI amountText;
 
-    private void Start() {
-        amount = 1;
-    }
-    
-    public void Plus() {
-        if (amount >= 100) return;
-        amount++;
-        UpdateAmount();
-    }
+        private void Start()
+        {
+            amount = 1;
+        }
 
-    public void Minus() {
-        if (amount <= 1) return;
-        amount--;
-        UpdateAmount();
-    }
-    
-    private void UpdateAmount() {
-        amountText.text = amount.ToString();
-    }
+        public void Plus()
+        {
+            if (amount >= 100) return;
+            amount++;
+            UpdateAmount();
+        }
 
-    public void ModalOptionReset() {
-        amount = 1;
-        UpdateAmount();
+        public void Minus()
+        {
+            if (amount <= 1) return;
+            amount--;
+            UpdateAmount();
+        }
+
+        private void UpdateAmount()
+        {
+            amountText.text = amount.ToString();
+        }
+
+        public void ModalOptionReset()
+        {
+            amount = 1;
+            UpdateAmount();
+        }
+
     }
 
 }
