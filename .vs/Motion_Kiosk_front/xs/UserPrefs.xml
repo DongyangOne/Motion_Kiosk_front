@@ -1,0 +1,26 @@
+﻿<Properties StartupConfiguration="{36B178E9-A3A8-F2D2-6AE5-04BC648FEAF2}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Amount.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Amount.cs" Line="28" Column="1" />
+      <File FileName="Assets/Scripts/ModalReset.cs" Line="6" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Motion_Kiosk_front" expanded="True">
+            <Node name="Assets" expanded="True" selected="True">
+              <Node name="Scripts" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="e7698240-e100-4c63-9cb8-bc8fb40e9728" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
