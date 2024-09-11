@@ -34,7 +34,8 @@ namespace Samples.Whisper
         private void Start()
         {
             UpdateMessage(message.text);
-            string apiKey = "sk-None-rKwUFueuFMNDdN1miXaST3BlbkFJzEmVKlJszn49bKlchik9";
+            // string apiKey = "sk-None-rKwUFueuFMNDdN1miXaST3BlbkFJzEmVKlJszn49bKlchik9";
+            string apiKey = "sk-ovOyYrGcrwsEPaZzgMLXYgnAQc3Yp2WKAWM6GgnrzDT3BlbkFJTKVN04_pqLKThwA60BOr4y9eiPdI496s4chKXwgiQA";
             openai = new OpenAIApi(apiKey);
 
             #if UNITY_WEBGL && !UNITY_EDITOR
