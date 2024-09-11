@@ -34,7 +34,8 @@ namespace Samples.Whisper
         private void Start()
         {
             UpdateMessage(message.text);
-            apiKey = PlayerPrefs.GetString("API_KEY", "default_key");
+            string apiKey = "sk-None-rKwUFueuFMNDdN1miXaST3BlbkFJzEmVKlJszn49bKlchik9";
+            openai = new OpenAIApi(apiKey);
 
             #if UNITY_WEBGL && !UNITY_EDITOR
             dropdown.options.Add(new Dropdown.OptionData("Microphone not supported on WebGL"));
