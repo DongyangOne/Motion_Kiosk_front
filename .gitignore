@@ -2,6 +2,7 @@ Library/
 Logs/
 Temp/
 UserSettings/
+Assets/Resources/api_key.txt
 
 *.csproj
 *.sln
