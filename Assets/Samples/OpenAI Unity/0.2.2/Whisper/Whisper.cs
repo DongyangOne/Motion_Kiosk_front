@@ -1,7 +1,7 @@
 ﻿using OpenAI;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; // Add this for scene management
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 namespace Samples.Whisper
@@ -18,7 +18,6 @@ namespace Samples.Whisper
         public GameObject completed;
         public GameObject STT;
 
-        // UIModal 필드 추가
         public UIModal uiModal;
         public GameObject modal;
 
@@ -34,12 +33,11 @@ namespace Samples.Whisper
         private void Start()
         {
             UpdateMessage(message.text);
-            // string apiKey = "sk-None-rKwUFueuFMNDdN1miXaST3BlbkFJzEmVKlJszn49bKlchik9";
-            string apiKey = "sk-apWuqOYJecmbZIor1UFB3NlMT2ul4dK7vJ9L48dlqjT3BlbkFJ3ERDaRiF5SXJF_G9RHmqYs5dNhzM5uCjvgZC2ksvIA";
+            string apiKey = "sk-XaXGuNIET9uqtuKP0QlAgGh53j3TYvsCGLpIBlmGcbT3BlbkFJHVrBt508cRS-9u3CjJNX158GdM-ZOfV3Mt7V-EjyAA";
             openai = new OpenAIApi(apiKey);
 
             #if UNITY_WEBGL && !UNITY_EDITOR
-            dropdown.options.Add(new Dropdown.OptionData("Microphone not supported on WebGL"));
+            dropdown.options.Add(new Dropdown.OptionData("웹GL에서는 마이크를 지원하지 않습니다"));
             #else
             foreach (var device in Microphone.devices)
             {
@@ -77,7 +75,7 @@ namespace Samples.Whisper
 
         private async void EndRecording()
         {
-            message.text = "Transcripting...";
+            message.text = "음성 인식 중...";
 
             #if !UNITY_WEBGL
             Microphone.End(null);
@@ -112,11 +110,7 @@ namespace Samples.Whisper
 
             if (message.text == "카드")
             {
-                Cart.SetActive(false);
-                card.SetActive(true);
-                payment.SetActive(false);
-                STT.SetActive(false);
-                StartCoroutine(TransitionToStartScene());
+                StartCoroutine(HandleCardText());
             }
 
             if (message.text.Contains("아메리카노"))
@@ -164,10 +158,19 @@ namespace Samples.Whisper
             }
         }
 
-        private IEnumerator TransitionToStartScene()
+        private IEnumerator HandleCardText()
         {
-            yield return new WaitForSeconds(3f); // Wait for 3 seconds
-            SceneManager.LoadScene("Start"); // Replace "Start" with the name of your start scene
+            card.SetActive(true);
+            STT.SetActive(false);
+            payment.SetActive(false);
+            yield return new WaitForSeconds(3f);
+
+            completed.SetActive(true);
+            card.SetActive(false);
+            STT.SetActive(false);
+            yield return new WaitForSeconds(3f);
+
+            SceneManager.LoadScene("Start");
         }
 
         private void Update()

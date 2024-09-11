@@ -59,20 +59,20 @@ public class PageController : MonoBehaviour
         STT.SetActive(false);
     }
 
-    // public void CardPayPage()
-    // {
-    //     CardPay.SetActive(true);
-    //     StartCoroutine(DeactivateCardPayAfterDelay(3f));
-    // }
+    public void CardPayPage()
+    {
+        CardPay.SetActive(true);
+        StartCoroutine(DeactivateCardPayAfterDelay(3f));
+    }
 
-    // private IEnumerator DeactivateCardPayAfterDelay(float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);
-    //     CardPay.SetActive(false);
-    //     completed.SetActive(true);
+    private IEnumerator DeactivateCardPayAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        CardPay.SetActive(false);
+        completed.SetActive(true);
         
-    //     yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3f);
         
-    //     SceneManager.LoadScene("Start");
-    // }
+        SceneManager.LoadScene("Start");
+    }
 }
