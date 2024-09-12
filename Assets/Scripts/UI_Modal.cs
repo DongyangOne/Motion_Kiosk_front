@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -13,6 +12,9 @@ public class UIModal : MonoBehaviour {
     public TextMeshProUGUI price;
     public GameObject OptionSlide;
     public GameObject cartModal;
+    public GameObject payModal;
+    public GameObject cardModal;
+    public GameObject completed;
 
     private void Start() {
         transform.gameObject.SetActive(false);
@@ -41,11 +43,33 @@ public class UIModal : MonoBehaviour {
     public void CartModal()
     {
         cartModal.SetActive(true);
+        payModal.SetActive(false);
+    }
+
+    public void PaymentModal()
+    {
+        payModal.SetActive(true);
+        cartModal.SetActive(false);
+    }
+
+    public void CardModal()
+    {
+        cardModal.SetActive(true);
+        payModal.SetActive(false);
+    }
+
+    public void PayCompleted()
+    {
+        completed.SetActive(true);
+        cardModal.SetActive(false);
     }
 
     public void CloseModal() {
         transform.gameObject.SetActive(false);
         cartModal.SetActive(false);
+        payModal.SetActive(false);
+        cardModal.SetActive(false);
+        completed.SetActive(false);
     }
 
     public void ResetModal() {
