@@ -13,7 +13,7 @@ UserSettings/
 .vscode
 
 # Ignore config files
-Assets/StreamingAssets/config.json
+Assets/StreamingAssets/api_config.json
 
 ### for macOS ###
 .DS_Store

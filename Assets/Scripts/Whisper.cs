@@ -34,7 +34,7 @@ namespace Samples.Whisper
         private void Start()
         {
             UpdateMessage(message.text);
-            apiKey = LoadApiKey(); // API 키 로드
+            apiKey = LoadApiKey();
             openai = new OpenAIApi(apiKey);
 
             #if UNITY_WEBGL && !UNITY_EDITOR
@@ -113,21 +113,23 @@ namespace Samples.Whisper
                 STT.SetActive(false);
             }
 
+            // 추가 명령어 처리 부분
+            // (주석 처리된 부분을 필요에 따라 활성화)
 
-            // if (message.text.Contains == "장바구니")
+            // if (message.text.Contains("장바구니"))
             // {
             //     Cart.SetActive(true);
             //     STT.SetActive(false);
             // }
 
-            // if (message.text.Contains == "결제하기")
+            // if (message.text.Contains("결제하기"))
             // {
             //     Cart.SetActive(false);
             //     payment.SetActive(true);
             //     STT.SetActive(false);
             // }
 
-            // if (message.text.Contains == "카드")
+            // if (message.text.Contains("카드"))
             // {
             //     StartCoroutine(HandleCardText());
             // }
@@ -176,6 +178,22 @@ namespace Samples.Whisper
             //     }
             // }
         }
+
+        private string LoadApiKey()
+        {
+            TextAsset jsonFile = Resources.Load<TextAsset>("api_config");
+            if (jsonFile != null)
+            {
+                ApiConfig config = JsonUtility.FromJson<ApiConfig>(jsonFile.text);
+                return config.apiKey;
+            }
+            else
+            {
+                Debug.LogError("API config file not found!");
+                return string.Empty;
+            }
+        }
+
         public void MenuScene()
         {
             SceneManager.LoadScene("MenuPage");
@@ -211,5 +229,11 @@ namespace Samples.Whisper
                 }
             }
         }
+    }
+
+    [System.Serializable]
+    public class ApiConfig
+    {
+        public string apiKey;
     }
 }
