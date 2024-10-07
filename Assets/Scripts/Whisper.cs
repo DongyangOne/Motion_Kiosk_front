@@ -18,9 +18,11 @@ namespace Samples.Whisper
         public GameObject payment;
         public GameObject completed;
         public GameObject STT;
-
         public UIModal uiModal;
         public GameObject modal;
+
+        public AudioSource reAudio;
+        public AudioClip replay;
 
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -107,12 +109,17 @@ namespace Samples.Whisper
                 MenuScene();
                 STT.SetActive(false);
             }
-
-            if (message.text.Contains("포장"))
+            else if (message.text.Contains("포장"))
             {
                 STT.SetActive(false);
+                MenuScene();
             }
-
+            else
+            {
+                reAudio.PlayOneShot(replay, 1.0f);
+                StartRecording();
+            }
+            
             // 추가 명령어 처리 부분
             // (주석 처리된 부분을 필요에 따라 활성화)
 

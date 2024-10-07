@@ -226,8 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 736c0626e5ae9e645ba3493151b45ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startAudio: {fileID: 0}
-  menuAudio: {fileID: 1182774651}
+  startAudio: {fileID: 1182774651}
   STT: {fileID: 2029935351}
   whisper: {fileID: 477017576}
 --- !u!4 &31395773
