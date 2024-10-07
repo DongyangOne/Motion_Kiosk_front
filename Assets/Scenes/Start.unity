@@ -2029,6 +2029,8 @@ MonoBehaviour:
   STT: {fileID: 1597147612}
   uiModal: {fileID: 0}
   modal: {fileID: 0}
+  reAudio: {fileID: 1896510474}
+  replay: {fileID: 8300000, guid: a172321bc99970940ad64046d0beed73, type: 3}
 --- !u!4 &1428315806
 Transform:
   m_ObjectHideFlags: 0
@@ -2834,7 +2836,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAudio: {fileID: 1896510474}
-  menuAudio: {fileID: 0}
   STT: {fileID: 1597147612}
   whisper: {fileID: 1428315805}
 --- !u!1 &1952377489
@@ -2867,7 +2868,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAudio: {fileID: 1896510474}
-  menuAudio: {fileID: 1896510474}
   STT: {fileID: 1597147612}
   whisper: {fileID: 1428315805}
 --- !u!4 &1952377491

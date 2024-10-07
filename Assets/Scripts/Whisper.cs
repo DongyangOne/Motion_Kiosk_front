@@ -104,12 +104,12 @@ namespace Samples.Whisper
             message.text = res.Text;
             recordButton.enabled = true;
 
-            if (message.text.Contains("매장"))
+            if(message.text.Contains("매장"))
             {
                 MenuScene();
                 STT.SetActive(false);
             }
-            else if (message.text.Contains("포장"))
+            else if(message.text.Contains("포장"))
             {
                 STT.SetActive(false);
                 MenuScene();
@@ -119,29 +119,57 @@ namespace Samples.Whisper
                 reAudio.PlayOneShot(replay, 1.0f);
                 StartRecording();
             }
-            
-            // 추가 명령어 처리 부분
-            // (주석 처리된 부분을 필요에 따라 활성화)
 
-            // if (message.text.Contains("장바구니"))
+            // if(message.text.Contains("커피"))
+            // {
+            //     //커피 카테고리로 이동
+            //UICarousel의 currentPage를 1
+            // }
+            // else if(message.text.Contains("차"))
+            // {
+            //     //차 카테고리로 이동
+            //UICarousel의 currentPage를 2
+            // }
+            // else if(message.text.Contains("과일음료"))
+            // {
+            //     //과일음료 카테고리로 이동
+            //UICarousel의 currentPage를 3
+            // }
+            // else if(message.text.Contains("스무디"))
+            // {
+            //     //스무디 카테고리로 이동
+            //UICarousel의 currentPage를 4
+            // }
+            // else if(message.text.Contains("디저트"))
+            // {
+            //     //디저트 카테고리로 이동
+            //UICarousel의 currentPage를 5
+            // }
+            // else
+            // {
+            //     reAudio.PlayOneShot(replay, 1.0f);
+            //     StartRecording();
+            // }
+
+            // if(message.text.Contains("장바구니"))
             // {
             //     Cart.SetActive(true);
             //     STT.SetActive(false);
             // }
 
-            // if (message.text.Contains("결제하기"))
+            // if(message.text.Contains("결제하기"))
             // {
             //     Cart.SetActive(false);
             //     payment.SetActive(true);
             //     STT.SetActive(false);
             // }
 
-            // if (message.text.Contains("카드"))
+            // if(message.text.Contains("카드"))
             // {
             //     StartCoroutine(HandleCardText());
             // }
 
-            // if (message.text.Contains("아메리카노"))
+            // if(message.text.Contains("아메리카노"))
             // {
             //     modal.SetActive(true);
             //     STT.SetActive(false);
@@ -152,7 +180,7 @@ namespace Samples.Whisper
             //     }
             // }
 
-            // if (message.text.Contains("에스프레소"))
+            // if(message.text.Contains("에스프레소"))
             // {
             //     modal.SetActive(true);
             //     STT.SetActive(false);
@@ -163,7 +191,7 @@ namespace Samples.Whisper
             //     }
             // }
 
-            // if (message.text.Contains("카페라떼") || message.text.Contains("카페 라떼"))
+            // if(message.text.Contains("카페라떼") || message.text.Contains("카페 라떼"))
             // {
             //     modal.SetActive(true);
             //     STT.SetActive(false);
@@ -174,7 +202,7 @@ namespace Samples.Whisper
             //     }
             // }
 
-            // if (message.text.Contains("카페모카") || message.text.Contains("카페 모카"))
+            // if(message.text.Contains("카페모카") || message.text.Contains("카페 모카"))
             // {
             //     modal.SetActive(true);
             //     STT.SetActive(false);
@@ -189,7 +217,7 @@ namespace Samples.Whisper
         private string LoadApiKey()
         {
             TextAsset jsonFile = Resources.Load<TextAsset>("api_config");
-            if (jsonFile != null)
+            if(jsonFile != null)
             {
                 ApiConfig config = JsonUtility.FromJson<ApiConfig>(jsonFile.text);
                 return config.apiKey;
