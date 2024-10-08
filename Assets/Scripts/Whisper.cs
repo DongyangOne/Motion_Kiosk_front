@@ -19,6 +19,7 @@ namespace Samples.Whisper
         public GameObject completed;
         public GameObject STT;
         public UIModal uiModal;
+        public UICarousel uiCarousel; 
         public GameObject modal;
 
         public AudioSource reAudio;
@@ -116,37 +117,39 @@ namespace Samples.Whisper
             }
             else
             {
+                //다시 말씀해주세요 음성클립 재생
                 reAudio.PlayOneShot(replay, 1.0f);
                 StartRecording();
             }
 
             // if(message.text.Contains("커피"))
             // {
-            //     //커피 카테고리로 이동
-            //UICarousel의 currentPage를 1
+            //     커피 카테고리로 이동 음성클립
+            //     CoffeeCategory();
             // }
             // else if(message.text.Contains("차"))
             // {
-            //     //차 카테고리로 이동
-            //UICarousel의 currentPage를 2
+            //     차 카테고리로 이동 음성클립
+            //     TeaCategory();
             // }
             // else if(message.text.Contains("과일음료"))
-            // {
-            //     //과일음료 카테고리로 이동
-            //UICarousel의 currentPage를 3
+            // {    
+            //     과일음료 카테고리로 이동 음성클립    
+            //     JuiceCategory();
             // }
             // else if(message.text.Contains("스무디"))
-            // {
-            //     //스무디 카테고리로 이동
-            //UICarousel의 currentPage를 4
+            // {    
+            //     스무디 카테고리로 이동 음성클립
+            //     SmoothieCategory();
             // }
             // else if(message.text.Contains("디저트"))
             // {
-            //     //디저트 카테고리로 이동
-            //UICarousel의 currentPage를 5
+            //     디저트 카테고리로 이동 음성클립
+            //     DessertCategory();
             // }
             // else
             // {
+                    //다시 말씀해주세요 음성클립 재생
             //     reAudio.PlayOneShot(replay, 1.0f);
             //     StartRecording();
             // }
@@ -171,6 +174,7 @@ namespace Samples.Whisper
 
             // if(message.text.Contains("아메리카노"))
             // {
+            //     아메리카노 선택하셨습니다 음성클립
             //     modal.SetActive(true);
             //     STT.SetActive(false);
             //     UIModal uiModal = FindObjectOfType<UIModal>();
@@ -182,6 +186,7 @@ namespace Samples.Whisper
 
             // if(message.text.Contains("에스프레소"))
             // {
+            //     에스프레소 선택하셨습니다 음성클립
             //     modal.SetActive(true);
             //     STT.SetActive(false);
             //     UIModal uiModal = FindObjectOfType<UIModal>();
@@ -193,6 +198,7 @@ namespace Samples.Whisper
 
             // if(message.text.Contains("카페라떼") || message.text.Contains("카페 라떼"))
             // {
+            //     카페라떼 선택하셨습니다 음성클립
             //     modal.SetActive(true);
             //     STT.SetActive(false);
             //     UIModal uiModal = FindObjectOfType<UIModal>();
@@ -204,6 +210,7 @@ namespace Samples.Whisper
 
             // if(message.text.Contains("카페모카") || message.text.Contains("카페 모카"))
             // {
+            //     카페모카 선택하셨습니다 음성클립
             //     modal.SetActive(true);
             //     STT.SetActive(false);
             //     UIModal uiModal = FindObjectOfType<UIModal>();
@@ -213,6 +220,54 @@ namespace Samples.Whisper
             //     }
             // }
         }
+
+        // public void CoffeeCategory()
+        // {
+        //     if(message.text.Contains("커피"))
+        //     {
+        //         UICarousel스크립트 currentPage를 1로
+        //     }
+        // }
+
+        // public void TeaCategory()
+        // {
+        //     if(message.text.Contains("차"))
+        //     {
+        //         UICarousel스크립트 currentPage를 2로
+        //     }
+        // }
+
+        // public void JuiceCategory()
+        // {
+        //     if(message.text.Contains("과일음료"))
+        //     {
+        //         UICarousel스크립트 currentPage를 3로
+        //     }
+        // }
+
+        // public void JuiceCategory()
+        // {
+        //     if(message.text.Contains("과일음료"))
+        //     {
+        //         UICarousel스크립트 currentPage를 3로
+        //     }
+        // }
+
+        // public void SmoothieCategory()
+        // {
+        //     if(message.text.Contains("스무디"))
+        //     {
+        //         UICarousel스크립트 currentPage를 4로
+        //     }
+        // }
+
+        // public void DessertCategory()
+        // {
+        //     if(message.text.Contains("디저트"))
+        //     {
+        //         UICarousel스크립트 currentPage를 5로
+        //     }
+        // }
 
         private string LoadApiKey()
         {
