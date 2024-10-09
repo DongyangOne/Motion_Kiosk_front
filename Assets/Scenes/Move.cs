@@ -12,11 +12,16 @@ public class Changes : MonoBehaviour
         SceneManager.LoadScene("Start");
     }
 
-    public void onClickHereButton()
+    public void onClickMotion()
     {
-        SceneManager.LoadScene("MenuPage");
+        SceneManager.LoadScene("SecondScene");
     }
-    public void onClickTakeOutButton()
+    public void onClickSpeak()
+    {
+        SceneManager.LoadScene("SelectWhere");
+    }
+
+    public void moveManuPage()
     {
         SceneManager.LoadScene("MenuPage");
     }

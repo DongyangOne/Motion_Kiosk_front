@@ -2,18 +2,18 @@
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuDataLoader.cs">
     <Files>
       <File FileName="Assets/Scenes/Move.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/MenuDataLoader.cs" Line="74" Column="26" />
-      <File FileName="Assets/Scripts/Login.cs" Line="56" Column="6" />
+      <File FileName="Assets/Scripts/MenuDataLoader.cs" Line="74" Column="19" />
+      <File FileName="Assets/Scripts/Login.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Motion_Kiosk_front" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scenes" expanded="True" />
-              <Node name="Scripts" expanded="True">
-                <Node name="MenuDataLoader.cs" selected="True" />
+              <Node name="Scenes" expanded="True">
+                <Node name="Move.cs" selected="True" />
               </Node>
+              <Node name="Scripts" expanded="True" />
             </Node>
           </Node>
         </State>
