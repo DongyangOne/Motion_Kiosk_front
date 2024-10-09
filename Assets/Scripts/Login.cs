@@ -56,13 +56,11 @@ public class Login : MonoBehaviour
 
     public void OnChangeID(string value)
     {
-        Debug.Log(value);
         username = value;
     }
 
     public void OnChangePW(string value)
     {
-        Debug.Log(value);
         password = value;
     }
 

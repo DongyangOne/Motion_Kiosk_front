@@ -15,6 +15,7 @@ public class Changes : MonoBehaviour
     public void onClickMotion()
     {
         SceneManager.LoadScene("SecondScene");
+
     }
     public void onClickSpeak()
     {
@@ -25,4 +26,6 @@ public class Changes : MonoBehaviour
     {
         SceneManager.LoadScene("MenuPage");
     }
+   
+
 }
