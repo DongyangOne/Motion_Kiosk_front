@@ -34,10 +34,15 @@ public class UICarousel : MonoBehaviour, ModalReset
     }
     
     void MovePage() {
-        if (levelPagesRect == null) return;
+    if (levelPagesRect == null) {
+        Debug.LogError("levelPagesRect가 null입니다.");
+        return;
+        }
+        
         levelPagesRect.LeanMoveLocal(targetPos, tweenTime).setEase(tweenType);
+        Debug.Log($"현재 페이지 {currentPage}, 목표 위치 {targetPos}");
     }
-    
+
     // 버튼 관련
     public void Previous() {
         if (currentPage > 1) {
@@ -45,16 +50,22 @@ public class UICarousel : MonoBehaviour, ModalReset
             targetPos = defaultPos + pageStep * (currentPage - 1);
             MovePage();
             ChangeBtnState();
+        } else {
+            Debug.LogWarning("이전 페이지가 없습니다.");
         }
     }
+
     public void Next() {
         if (currentPage < maxPage) {
             currentPage++;
             targetPos = defaultPos + pageStep * (currentPage - 1);
             MovePage();
             ChangeBtnState();
+        } else {
+            Debug.LogWarning("다음 페이지가 없습니다.");
         }
     }
+
 
 
     private void ChangeBtnState() {

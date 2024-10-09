@@ -19,7 +19,7 @@ namespace Samples.Whisper
         public GameObject completed;
         public GameObject STT;
         public UIModal uiModal;
-        public UICarousel uiCarousel; 
+        public UICarousel uiCarousel;
         public GameObject modal;
 
         public AudioSource reAudio;
@@ -104,170 +104,34 @@ namespace Samples.Whisper
             progressBar.fillAmount = 0;
             message.text = res.Text;
             recordButton.enabled = true;
-
-            if(message.text.Contains("매장"))
+            
+            if(message.text.Contains("커피"))
             {
-                MenuScene();
-                STT.SetActive(false);
+                uiCarousel.SetPage(1);
             }
-            else if(message.text.Contains("포장"))
+            else if(message.text.Contains("차"))
             {
-                STT.SetActive(false);
-                MenuScene();
+                uiCarousel.SetPage(2);
+            }
+            else if(message.text.Contains("과일음료"))
+            {
+                uiCarousel.SetPage(3);
+            }
+            else if(message.text.Contains("스무디"))
+            {
+                uiCarousel.SetPage(4);
+            }
+            else if(message.text.Contains("디저트"))
+            {
+                uiCarousel.SetPage(5);
             }
             else
             {
-                //다시 말씀해주세요 음성클립 재생
+                // 잘못된 입력 시 음성클립 재생
                 reAudio.PlayOneShot(replay, 1.0f);
                 StartRecording();
             }
-
-            // if(message.text.Contains("커피"))
-            // {
-            //     커피 카테고리로 이동 음성클립
-            //     CoffeeCategory();
-            // }
-            // else if(message.text.Contains("차"))
-            // {
-            //     차 카테고리로 이동 음성클립
-            //     TeaCategory();
-            // }
-            // else if(message.text.Contains("과일음료"))
-            // {    
-            //     과일음료 카테고리로 이동 음성클립    
-            //     JuiceCategory();
-            // }
-            // else if(message.text.Contains("스무디"))
-            // {    
-            //     스무디 카테고리로 이동 음성클립
-            //     SmoothieCategory();
-            // }
-            // else if(message.text.Contains("디저트"))
-            // {
-            //     디저트 카테고리로 이동 음성클립
-            //     DessertCategory();
-            // }
-            // else
-            // {
-                    //다시 말씀해주세요 음성클립 재생
-            //     reAudio.PlayOneShot(replay, 1.0f);
-            //     StartRecording();
-            // }
-
-            // if(message.text.Contains("장바구니"))
-            // {
-            //     Cart.SetActive(true);
-            //     STT.SetActive(false);
-            // }
-
-            // if(message.text.Contains("결제하기"))
-            // {
-            //     Cart.SetActive(false);
-            //     payment.SetActive(true);
-            //     STT.SetActive(false);
-            // }
-
-            // if(message.text.Contains("카드"))
-            // {
-            //     StartCoroutine(HandleCardText());
-            // }
-
-            // if(message.text.Contains("아메리카노"))
-            // {
-            //     아메리카노 선택하셨습니다 음성클립
-            //     modal.SetActive(true);
-            //     STT.SetActive(false);
-            //     UIModal uiModal = FindObjectOfType<UIModal>();
-            //     if (uiModal != null)
-            //     {
-            //         uiModal.OpenModal("아메리카노", 2000, "americano");
-            //     }
-            // }
-
-            // if(message.text.Contains("에스프레소"))
-            // {
-            //     에스프레소 선택하셨습니다 음성클립
-            //     modal.SetActive(true);
-            //     STT.SetActive(false);
-            //     UIModal uiModal = FindObjectOfType<UIModal>();
-            //     if (uiModal != null)
-            //     {
-            //         uiModal.OpenModal("에스프레소", 1500, "espresso");
-            //     }
-            // }
-
-            // if(message.text.Contains("카페라떼") || message.text.Contains("카페 라떼"))
-            // {
-            //     카페라떼 선택하셨습니다 음성클립
-            //     modal.SetActive(true);
-            //     STT.SetActive(false);
-            //     UIModal uiModal = FindObjectOfType<UIModal>();
-            //     if (uiModal != null)
-            //     {
-            //         uiModal.OpenModal("카페라떼", 3000, "cafelatte");
-            //     }
-            // }
-
-            // if(message.text.Contains("카페모카") || message.text.Contains("카페 모카"))
-            // {
-            //     카페모카 선택하셨습니다 음성클립
-            //     modal.SetActive(true);
-            //     STT.SetActive(false);
-            //     UIModal uiModal = FindObjectOfType<UIModal>();
-            //     if (uiModal != null)
-            //     {
-            //         uiModal.OpenModal("카페모카", 3000, "cafemocha");
-            //     }
-            // }
         }
-
-        // public void CoffeeCategory()
-        // {
-        //     if(message.text.Contains("커피"))
-        //     {
-        //         UICarousel스크립트 currentPage를 1로
-        //     }
-        // }
-
-        // public void TeaCategory()
-        // {
-        //     if(message.text.Contains("차"))
-        //     {
-        //         UICarousel스크립트 currentPage를 2로
-        //     }
-        // }
-
-        // public void JuiceCategory()
-        // {
-        //     if(message.text.Contains("과일음료"))
-        //     {
-        //         UICarousel스크립트 currentPage를 3로
-        //     }
-        // }
-
-        // public void JuiceCategory()
-        // {
-        //     if(message.text.Contains("과일음료"))
-        //     {
-        //         UICarousel스크립트 currentPage를 3로
-        //     }
-        // }
-
-        // public void SmoothieCategory()
-        // {
-        //     if(message.text.Contains("스무디"))
-        //     {
-        //         UICarousel스크립트 currentPage를 4로
-        //     }
-        // }
-
-        // public void DessertCategory()
-        // {
-        //     if(message.text.Contains("디저트"))
-        //     {
-        //         UICarousel스크립트 currentPage를 5로
-        //     }
-        // }
 
         private string LoadApiKey()
         {

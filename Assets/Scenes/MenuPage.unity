@@ -2698,9 +2698,10 @@ MonoBehaviour:
   completed: {fileID: 0}
   STT: {fileID: 2029935351}
   uiModal: {fileID: 0}
+  uiCarousel: {fileID: 586177277}
   modal: {fileID: 0}
-  reAudio: {fileID: 0}
-  replay: {fileID: 0}
+  reAudio: {fileID: 1182774651}
+  replay: {fileID: 8300000, guid: a172321bc99970940ad64046d0beed73, type: 3}
 --- !u!4 &477017577
 Transform:
   m_ObjectHideFlags: 0
