@@ -379,7 +379,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uB9E4\uC7A5"
+  m_Text: "\uC74C\uC131\uC778\uC2DD\n\uD0A4\uC624\uC2A4\uD06C\n\uC0AC\uC6A9\uD558\uAE30"
 --- !u!222 &390977595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -458,7 +458,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD3EC\uC7A5"
+  m_Text: "\uBE44\uC811\uCD09\n\uD0A4\uC624\uC2A4\uD06C\n\uC0AC\uC6A9\uD558\uAE30 "
 --- !u!222 &724608358
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 839613558}
   - component: {fileID: 839613557}
   m_Layer: 0
-  m_Name: Takeout
+  m_Name: motion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -552,7 +552,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135232476}
         m_TargetAssemblyTypeName: Changes, Assembly-CSharp
-        m_MethodName: onClickTakeOutButton
+        m_MethodName: onClickMotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -862,7 +862,7 @@ GameObject:
   - component: {fileID: 1858208257}
   - component: {fileID: 1858208256}
   m_Layer: 0
-  m_Name: Here
+  m_Name: speak
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135232476}
         m_TargetAssemblyTypeName: Changes, Assembly-CSharp
-        m_MethodName: onClickHereButton
+        m_MethodName: onClickSpeak
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

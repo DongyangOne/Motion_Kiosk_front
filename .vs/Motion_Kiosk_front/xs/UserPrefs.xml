@@ -1,9 +1,13 @@
 ﻿<Properties StartupConfiguration="{36B178E9-A3A8-F2D2-6AE5-04BC648FEAF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuDataLoader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ThirdScene.cs">
     <Files>
-      <File FileName="Assets/Scenes/Move.cs" Line="8" Column="1" />
-      <File FileName="Assets/Scripts/MenuDataLoader.cs" Line="74" Column="26" />
-      <File FileName="Assets/Scripts/Login.cs" Line="56" Column="6" />
+      <File FileName="Assets/Scenes/Move.cs" Line="28" Column="6" />
+      <File FileName="Assets/Scripts/MenuDataLoader.cs" Line="74" Column="19" />
+      <File FileName="Assets/Scripts/Login.cs" Line="7" Column="1" />
+      <File FileName="Assets/Scripts/UI_Modal.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/SecondScene.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/SecondScene1.cs" Line="19" Column="6" />
+      <File FileName="Assets/Scripts/ThirdScene.cs" Line="26" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,10 +16,15 @@
             <Node name="Assets" expanded="True">
               <Node name="Scenes" expanded="True" />
               <Node name="Scripts" expanded="True">
-                <Node name="MenuDataLoader.cs" selected="True" />
+                <Node name="NavDataManager.cs" selected="True" />
               </Node>
             </Node>
           </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
