@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,6 +16,7 @@ public class NavDataManager : MonoBehaviour {
     
     
     
+    // object 만드는 함수
     private GameObject CreateNavPage(string objectName) {
         Transform navContainer = transform.Find("NavContainer");
         GameObject newObject = Instantiate(navPage, navContainer);
@@ -69,28 +71,26 @@ public class NavDataManager : MonoBehaviour {
         return newObject;
     }
 
-    public void Start() {
+    public void NavRender(Dictionary<string, CategoryData> categoryDict) {
+        List<string> categoryList = new List<string>(categoryDict.Keys);
         
-        // 데이터 불러오는 부분으로 수정해야함
-        string[] navData = { "커피", "차", "과일음료", "스무디", "디져트"  };
-
         int navPageCount = 0;
         GameObject newNavPage = CreateNavPage(navPageCount.ToString());
-        for (int i = 0; i < navData.Length; i++) {
+        for (int i = 0; i < categoryList.Count; i++) {
             if (i % 3 == 0 & i != 0) {
                 navPageCount++;
                 newNavPage = CreateNavPage(navPageCount.ToString());
             }
-            CreateNavOption(newNavPage, navData[i], i);
+            CreateNavOption(newNavPage, categoryList[i], i);
             
         }
         
         // EmptyCell 보충
-        int remainder = navData.Length % 3;
+        int remainder = categoryList.Count % 3;
         if (remainder != 0) {
             int differ = 3 - remainder;
             for (int j = 0; j < differ; j++) {
-            CreateEmptyCell(newNavPage);
+                CreateEmptyCell(newNavPage);
             }
         }
         
@@ -101,4 +101,5 @@ public class NavDataManager : MonoBehaviour {
         UICarousel navCarousel = transform.GetComponent<UICarousel>();
         navCarousel.ResetCarousel();
     }
+
 }
