@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Changes : MonoBehaviour
 {
-    void Start()
-    {
-  
-    }
+
+
     public void OnClickLoginButton()
     {
         SceneManager.LoadScene("Start");

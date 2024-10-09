@@ -77,7 +77,7 @@ public class CategoryDataManager : MonoBehaviour {
         {
             //image
             // dataLoader.LoadImage(cellData.imgURL, imageComponent);
-            dataLoader.LoadImage(cellData.menuname, imageComponent);
+            //dataLoader.LoadImage(cellData.menuname, imageComponent);
         }
 
         // 이름 변경
