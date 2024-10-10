@@ -17,7 +17,7 @@ public class UIModal : MonoBehaviour {
     public GameObject completed;
 
     private void Start() {
-        transform.gameObject.SetActive(false);
+        // transform.gameObject.SetActive(false);
     }
 
     public void OpenModal(string menuName, int menuPrice, string imageURL) {

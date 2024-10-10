@@ -72,7 +72,7 @@ public class NavDataManager : MonoBehaviour {
     public void Start() {
         
         // 데이터 불러오는 부분으로 수정해야함
-        string[] navData = { "커피", "차", "과일음료", "스무디", "디져트"  };
+        string[] navData = { "커피", "차", "과일음료", "스무디", "디저트"  };
 
         int navPageCount = 0;
         GameObject newNavPage = CreateNavPage(navPageCount.ToString());

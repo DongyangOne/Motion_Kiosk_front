@@ -2692,14 +2692,15 @@ MonoBehaviour:
   progressBar: {fileID: 1466725010}
   message: {fileID: 1085462586}
   dropdown: {fileID: 1707297456}
-  Cart: {fileID: 0}
-  card: {fileID: 0}
-  payment: {fileID: 0}
-  completed: {fileID: 0}
+  Cart: {fileID: 1054958299}
+  card: {fileID: 1568895651}
+  payment: {fileID: 1748449674}
+  completed: {fileID: 1480790852}
   STT: {fileID: 2029935351}
-  uiModal: {fileID: 0}
+  uiModal: {fileID: 163368170}
   uiCarousel: {fileID: 586177277}
-  modal: {fileID: 0}
+  modal: {fileID: 163368168}
+  CategorySlide: {fileID: 4923462583129930231}
   reAudio: {fileID: 1182774651}
   replay: {fileID: 8300000, guid: a172321bc99970940ad64046d0beed73, type: 3}
 --- !u!4 &477017577
@@ -10852,7 +10853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2029935352
 RectTransform:
   m_ObjectHideFlags: 0
