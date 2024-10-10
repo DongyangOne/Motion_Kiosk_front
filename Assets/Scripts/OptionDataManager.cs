@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 
 public class OptionData {
     public List<string> options { get; set; }
 }
+
 
 public class OptionDataManager : MonoBehaviour {
 
@@ -16,6 +18,7 @@ public class OptionDataManager : MonoBehaviour {
     public GameObject OptionRow;
     public GameObject OptionButton;
     public GameObject OptionLine;
+
 
 
     private GameObject CreateOptionPage() {
@@ -50,17 +53,16 @@ public class OptionDataManager : MonoBehaviour {
         
         return newObject;
     }
-    
+
+  
     void Start() {
-        
+
         // 데이터 불러오는 부분임
         List<OptionData> optionData = new List<OptionData>();
         optionData.AddRange(
             new OptionData[] {
-                new OptionData {options = new List<string>{"차갑게", "뜨겁게"}},
-                new OptionData {options = new List<string>{"스몰", "레귤러", "라지"}},
-                new OptionData {options = new List<string>{"샷추가", "반샷"}},
-                new OptionData {options = new List<string>{"달게", "덜달게"}},
+                new OptionData {options = new List<string>{"ICE", "HOT"}},
+                new OptionData {options = new List<string>{"샷추가", "연하게"}},
         });
 
         GameObject newOptionPage = CreateOptionPage();

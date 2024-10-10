@@ -34,8 +34,8 @@ public class LoginResponse
 
 public class Login : MonoBehaviour
 {
-    private string username;
-    private string password;
+    private string username = "";
+    private string password = "";
     private string apiURL = "http://116.39.208.72:8022";
     public string token;
     private bool isLoggedin = false;
