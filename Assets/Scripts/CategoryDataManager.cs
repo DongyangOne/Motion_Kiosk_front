@@ -47,7 +47,7 @@ public class CategoryDataManager : MonoBehaviour {
 
     private void CreateMenuCell(GameObject parent, MenuData cellData) {
         GameObject newObject = Instantiate(menuCell, parent.transform);
-        newObject.name = cellData.menuname;
+        newObject.name = cellData.name;
         
         Button button = newObject.GetComponent<Button>();
         if (button != null) {
@@ -58,7 +58,7 @@ public class CategoryDataManager : MonoBehaviour {
                     if (modalController != null)
                     {
                         //image
-                        modalController.OpenModal(cellData.menuname, cellData.price, cellData.menuname);
+                        modalController.OpenModal(cellData.name, cellData.price, cellData.img);
                     }
                     else
                     {
@@ -76,13 +76,12 @@ public class CategoryDataManager : MonoBehaviour {
         if (imageComponent != null)
         {
             //image
-            // dataLoader.LoadImage(cellData.imgURL, imageComponent);
-            //dataLoader.LoadImage(cellData.menuname, imageComponent);
+            dataLoader.LoadImage(cellData.img, imageComponent);
         }
 
         // 이름 변경
         GameObject menuName = newObject.transform.Find("MenuName").gameObject;
-        UpdateText(menuName, cellData.menuname);
+        UpdateText(menuName, cellData.name);
         
         // 가격 변경
         GameObject menuPrice = newObject.transform.Find("MenuPrice").gameObject;

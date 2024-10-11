@@ -14,11 +14,12 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class MenuData {
     public string id;
-    public string menuname;
+    public string name;
     public int price;
     public string category;
-// 수정!!!
-    // public string imageURL;
+    public string status;
+    public string img;
+    public List<string> options;
 }
 [System.Serializable]
 public class CategoryData {
@@ -41,34 +42,12 @@ public class ApiResponse {
     public List<MenuData> data;
 }
 
-//// Login
-//[System.Serializable]
-//public class LoginRequest {
-//    public string username;
-//    public string password;
-
-//    public LoginRequest(string username, string password) {
-//        this.username = username;
-//        this.password = password;
-//    }
-//}
-
-//[System.Serializable]
-//public class LoginData {
-//    public string token;
-//}
-//[System.Serializable]
-//public class LoginResponse {
-//    public int code;
-//    public string message;
-//    public LoginData data;
-//}
 
 
 
 public class MenuDataLoader : MonoBehaviour {
-
     private string apiURL = "http://116.39.208.72:8022";
+
 
 
     // 이미지 불러오기 실패
@@ -79,10 +58,10 @@ public class MenuDataLoader : MonoBehaviour {
     
     // category data dict - string key , CategoryData value로 이루어짐
     Dictionary<string, CategoryData> categoryDict = new Dictionary<string, CategoryData>();
-    
-    
 
-    
+
+
+
     // API Get Menu
     IEnumerator GetDataRequest(string url, string token) {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url)) {
@@ -110,9 +89,11 @@ public class MenuDataLoader : MonoBehaviour {
                     // 메뉴 추가
                     categoryDict[menu.category].menuList.Add(new MenuData {
                         id = menu.id,
-                        menuname = menu.menuname,
+                        name = menu.name,
                         price = menu.price,
-                        category = menu.category
+                        category = menu.category,
+                        img = menu.img,
+                        options = menu.options
                     });
                 }
                 
@@ -142,7 +123,9 @@ public class MenuDataLoader : MonoBehaviour {
             }
         }
 
-        yield return StartCoroutine(GetDataRequest(apiURL + "/api/menu/total", PlayerPrefs.GetString("token")));
+        yield return StartCoroutine(GetDataRequest(apiURL + "/api2/menu", PlayerPrefs.GetString("token")));
+
+       
     }
 
     public void LoadData() {

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Networking;
 
 
 public class UIModal : MonoBehaviour {
@@ -15,6 +16,8 @@ public class UIModal : MonoBehaviour {
     public GameObject payModal;
     public GameObject cardModal;
     public GameObject completed;
+    public MenuDataLoader dataLoader;
+
 
     private void Start() {
         transform.gameObject.SetActive(false);
@@ -34,11 +37,40 @@ public class UIModal : MonoBehaviour {
 
         title.text = menuName;
         price.text = menuPrice.ToString();
-        Sprite image = Resources.Load<Sprite>("Menu/" + imageURL);
-        if (image != null) {
-            menuImage.sprite = image;
+        StartCoroutine(LoadImageFromURL(imageURL));
+        //Sprite image = Resources.Load<Sprite>(imageURL);
+        //if (image != null) {
+        //    menuImage.sprite = image;
+        //}
+    }
+
+    IEnumerator LoadImageFromURL(string url)
+    {
+        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(url))
+        {
+            // 요청을 보내고 응답을 기다림
+            yield return request.SendWebRequest();
+
+            // 네트워크 에러 또는 HTTP 에러 체크
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError(request.error);
+            }
+            else
+            {
+                // 텍스처 가져오기
+                Texture2D texture = DownloadHandlerTexture.GetContent(request);
+
+                // 텍스처를 Sprite로 변환하여 Image에 적용
+                if (texture != null)
+                {
+                    Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                    menuImage.sprite = sprite;
+                }
+            }
         }
     }
+
 
     public void CartModal()
     {
