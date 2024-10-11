@@ -21,6 +21,8 @@ public class OptionDataManager : MonoBehaviour {
 
 
 
+
+
     private GameObject CreateOptionPage() {
         Transform optionContainer = OptionSlide.transform.Find("OptionContainer");
         GameObject newObject = Instantiate(OptionPage, optionContainer);

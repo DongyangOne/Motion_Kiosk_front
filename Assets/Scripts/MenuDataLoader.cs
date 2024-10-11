@@ -46,8 +46,8 @@ public class ApiResponse {
 
 
 public class MenuDataLoader : MonoBehaviour {
-
     private string apiURL = "http://116.39.208.72:8022";
+
 
 
     // 이미지 불러오기 실패
@@ -58,10 +58,10 @@ public class MenuDataLoader : MonoBehaviour {
     
     // category data dict - string key , CategoryData value로 이루어짐
     Dictionary<string, CategoryData> categoryDict = new Dictionary<string, CategoryData>();
-    
-    
 
-    
+
+
+
     // API Get Menu
     IEnumerator GetDataRequest(string url, string token) {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url)) {
@@ -92,7 +92,8 @@ public class MenuDataLoader : MonoBehaviour {
                         name = menu.name,
                         price = menu.price,
                         category = menu.category,
-                        img = menu.img
+                        img = menu.img,
+                        options = menu.options
                     });
                 }
                 
@@ -123,6 +124,8 @@ public class MenuDataLoader : MonoBehaviour {
         }
 
         yield return StartCoroutine(GetDataRequest(apiURL + "/api2/menu", PlayerPrefs.GetString("token")));
+
+       
     }
 
     public void LoadData() {
