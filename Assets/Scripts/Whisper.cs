@@ -137,7 +137,7 @@ namespace Samples.Whisper
                 command.Contains("디저트") ||
                 command.Contains("바닐라라떼") || command.Contains("바닐라 라떼") ||
                 command.Contains("케모마일") ||
-                command.Contains("얼그레이") ||
+                command.Equals("얼그레이") ||
                 command.Contains("쟈스민") ||
                 command.Contains("페퍼민트") ||
                 command.Contains("자몽") ||
@@ -217,7 +217,7 @@ namespace Samples.Whisper
                 STT.SetActive(false);
                 OpenModalWithDelay("케모마일", 2000, "chamomile");
             }
-            else if (command.Contains("얼그레이"))
+            else if (command.Equals("얼그레이"))
             {
                 modal.SetActive(true);
                 STT.SetActive(false);
