@@ -59,12 +59,11 @@ public class OptionDataManager : MonoBehaviour {
   
     void Start() {
 
-        // 데이터 불러오는 부분임
+        // 데이터 불러오는 부분임 
         List<OptionData> optionData = new List<OptionData>();
         optionData.AddRange(
             new OptionData[] {
                 new OptionData {options = new List<string>{"ICE", "HOT"}},
-                new OptionData {options = new List<string>{"샷추가", "연하게"}},
         });
 
         GameObject newOptionPage = CreateOptionPage();
