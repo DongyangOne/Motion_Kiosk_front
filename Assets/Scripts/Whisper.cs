@@ -177,7 +177,7 @@ namespace Samples.Whisper
                 payment.SetActive(true);
                 STT.SetActive(false);
             }
-            else if (command.Contains("카드"))
+            else if (command.Contains("카드") || card.activeSelf)
             {
                 StartCoroutine(HandleCardText());
             }
@@ -404,13 +404,15 @@ namespace Samples.Whisper
             SceneManager.LoadScene("MenuPage");
         }
 
+        //카드 결제시
         private IEnumerator HandleCardText()
-        {
+        {   
+            //카드 결제 모달 on
             card.SetActive(true);
             STT.SetActive(false);
             payment.SetActive(false);
             yield return new WaitForSeconds(3f);
-
+            //카드 결제 모달 off / 결제 완료 모달 on / 3초 뒤 처음화면 이동
             completed.SetActive(true);
             card.SetActive(false);
             STT.SetActive(false);
