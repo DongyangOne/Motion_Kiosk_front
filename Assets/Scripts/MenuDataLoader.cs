@@ -124,8 +124,6 @@ public class MenuDataLoader : MonoBehaviour {
         }
 
         yield return StartCoroutine(GetDataRequest(apiURL + "/api2/menu", PlayerPrefs.GetString("token")));
-
-       
     }
 
     public void LoadData() {
@@ -143,13 +141,14 @@ public class MenuDataLoader : MonoBehaviour {
             // 에러 처리
             if (webRequest.result == UnityWebRequest.Result.ConnectionError || 
                 webRequest.result == UnityWebRequest.Result.ProtocolError) {
-                Debug.LogError(webRequest.error);
                 imgObject.sprite = notFoundSprite;
+                imgObject.color = Color.black;
             } else {
                 // 요청 성공 시 텍스처를 가져와 스프라이트로 변환
                 Texture2D texture = DownloadHandlerTexture.GetContent(webRequest);
                 Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
                 imgObject.sprite = sprite;
+                imgObject.color = Color.white;
                 imgObject.SetNativeSize();
             }
         }
@@ -175,4 +174,6 @@ public class MenuDataLoader : MonoBehaviour {
     public void LoadImage(string imgURL, Image imgObject) {
         StartCoroutine(LoginAndLoadImg(imgURL, imgObject));
     }
+    
+    
 }

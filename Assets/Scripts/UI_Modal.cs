@@ -8,107 +8,108 @@ using UnityEngine.Networking;
 
 
 public class UIModal : MonoBehaviour {
-    public Image menuImage;
-    public TextMeshProUGUI title;
-    public TextMeshProUGUI price;
-    public GameObject OptionSlide;
+    public GameObject menuModal;
     public GameObject cartModal;
     public GameObject payModal;
     public GameObject cardModal;
     public GameObject completed;
-    public MenuDataLoader dataLoader;
 
+    private string modalOption = "";
 
     private void Start() {
         transform.gameObject.SetActive(false);
     }
 
-    public void OpenModal(string menuName, int menuPrice, string imageURL) {
-        ResetModal();
-        
-        // UICarousel optionCarousel = OptionSlide.GetComponent<UICarousel>();
-        // if (optionCarousel != null)
-        // {
-        //     optionCarousel.SetPage(1);
-        // }
-        //
-        
+    public void MenuModal() {
+        CloseAll();
         transform.gameObject.SetActive(true);
-
-        title.text = menuName;
-        price.text = menuPrice.ToString();
-        StartCoroutine(LoadImageFromURL(imageURL));
-        //Sprite image = Resources.Load<Sprite>(imageURL);
-        //if (image != null) {
-        //    menuImage.sprite = image;
-        //}
+        menuModal.SetActive(true);
+    }
+    
+    public void CartModal()
+    {
+        CloseAll();
+        transform.gameObject.SetActive(true);
+        cartModal.SetActive(true);
+        CartModalFunc cartModalScript = cartModal.GetComponent<CartModalFunc>();
+        cartModalScript.OpenCartModal();
     }
 
-    IEnumerator LoadImageFromURL(string url)
-    {
-        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(url))
-        {
-            // 요청을 보내고 응답을 기다림
-            yield return request.SendWebRequest();
-
-            // 네트워크 에러 또는 HTTP 에러 체크
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
-            {
-                Debug.LogError(request.error);
-            }
-            else
-            {
-                // 텍스처 가져오기
-                Texture2D texture = DownloadHandlerTexture.GetContent(request);
-
-                // 텍스처를 Sprite로 변환하여 Image에 적용
-                if (texture != null)
-                {
-                    Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
-                    menuImage.sprite = sprite;
-                }
-            }
+    // 결제 방법 선택에서 뒤로가기 하면 나오는 화면 선택
+    public void PaymentModalOption() {
+        if (modalOption == "menu") {
+            MenuModal();
+        }
+        else {
+            CartModal();
         }
     }
 
-
-    public void CartModal()
-    {
-        cartModal.SetActive(true);
-        payModal.SetActive(false);
-    }
-
-    public void PaymentModal()
-    {
+    // 결제 방법 선택
+    public void PaymentModal(string option, int totalPrice) {
+        modalOption = option;
+        CloseAll();
+        transform.gameObject.SetActive(true);
         payModal.SetActive(true);
-        cartModal.SetActive(false);
-    }
 
+        PaymentModal payModalScript = payModal.GetComponent<PaymentModal>();
+        payModalScript.setPaymentTotalPrice(totalPrice);
+    }
+    
+    // 카드 선택
     public void CardModal()
     {
+        CloseAll();
+        transform.gameObject.SetActive(true);
         cardModal.SetActive(true);
-        payModal.SetActive(false);
+        OpenPayComplete();
     }
-
+    
+    // 주문 완료
     public void PayCompleted()
     {
+        CloseAll();
+        transform.gameObject.SetActive(true);
         completed.SetActive(true);
-        cardModal.SetActive(false);
+        ReturnMain();
+    }
+    // 주문 종료 후 리셋
+    public void ResetMain() {
+        CartModalFunc cartModalScript = cartModal.GetComponent<CartModalFunc>();
+        cartModalScript.ResetCart();
+        
+        CloseModal();
     }
 
-    public void CloseModal() {
-        transform.gameObject.SetActive(false);
+
+
+
+    // 모든 모달 끄기
+    public void CloseAll() {
+        menuModal.SetActive(false);
         cartModal.SetActive(false);
         payModal.SetActive(false);
         cardModal.SetActive(false);
         completed.SetActive(false);
     }
 
-    public void ResetModal() {
-        ModalReset[] resetComponents = transform.GetComponentsInChildren<ModalReset>(true);
-        foreach (ModalReset components in resetComponents) {
-            components.ModalOptionReset();
-        }
-
+    public void CloseModal() {
+        CloseAll();
+        transform.gameObject.SetActive(false);
     }
+
+    // 딜레이
+    private IEnumerator ExecuteAfterDelay(Action action) {
+        yield return new WaitForSeconds(5);
+        action();
+    }
+
+    public void OpenPayComplete() {
+        StartCoroutine(ExecuteAfterDelay(PayCompleted));
+    }
+
+    public void ReturnMain() {
+        StartCoroutine(ExecuteAfterDelay(ResetMain));
+    }
+    
 }

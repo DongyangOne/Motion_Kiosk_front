@@ -8,7 +8,7 @@ public class CategoryDataManager : MonoBehaviour {
     public NavDataManager navManager;
     
     // 원래 존제하는 오브젝트
-    public GameObject modalObject;
+    public GameObject menuModal;
     
     // 만들어질 오브젝트 컴포넌트
     public GameObject categoryPage;
@@ -52,13 +52,12 @@ public class CategoryDataManager : MonoBehaviour {
         Button button = newObject.GetComponent<Button>();
         if (button != null) {
             button.onClick.AddListener(()=>{
-                if (modalObject != null)
-                {
-                    UIModal modalController = modalObject.GetComponent<UIModal>();
+                if (menuModal != null) {
+                    MenuModal modalController = menuModal.GetComponent<MenuModal>();
                     if (modalController != null)
                     {
                         //image
-                        modalController.OpenModal(cellData.name, cellData.price, cellData.img);
+                        modalController.OpenModal(cellData);
                     }
                     else
                     {
@@ -67,7 +66,7 @@ public class CategoryDataManager : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.LogError("ModalObject가 할당되지 않았습니다.");
+                    Debug.LogError("menuModal가 할당되지 않았습니다.");
                 }});
         }
 
@@ -93,6 +92,21 @@ public class CategoryDataManager : MonoBehaviour {
     
     
     private void CategoryRender(Dictionary<string, CategoryData> categoryDict) {
+
+        // 테스트 데이터
+        // categoryDict["test"] = new CategoryData("test");
+        // categoryDict["test"].menuList = new List<MenuData>();
+        //
+        // MenuData m = new MenuData();
+        // m.id = "test";
+        // m.name = "test";
+        // m.price = 3000;
+        // m.category = "test";
+        // m.img = "test";
+        // m.options = new List<string> { "ice", "ttt" };
+        //
+        // categoryDict["test"].menuList.Add(m);
+        
         foreach (string categoryName in categoryDict.Keys) {
             GameObject newCategoryPage = CreateCategoryPage(categoryName);
             GameObject menuSlide = newCategoryPage.transform.Find("MenuSlide").gameObject;
