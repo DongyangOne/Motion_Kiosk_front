@@ -1093,7 +1093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 246.56702}
+  m_AnchoredPosition: {x: 0, y: 754.567}
   m_SizeDelta: {x: 837.222, y: 732.83}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &832695452
@@ -1378,7 +1378,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 608}
   m_SizeDelta: {x: 837.222, y: 109.924}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1072176982
@@ -1638,7 +1638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1125.962}
+  m_AnchoredPosition: {x: 0, y: 1633.962}
   m_SizeDelta: {x: 837.222, y: 109.924}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1134519119
@@ -2284,7 +2284,18 @@ MonoBehaviour:
   uiModal: {fileID: 0}
   reAudio: {fileID: 1896510474}
   replay: {fileID: 8300000, guid: c1573bf5e7d811e428d7d24eab8d1a3f, type: 3}
+  coffeeClip: {fileID: 0}
+  teaClip: {fileID: 0}
+  noncoffeeClip: {fileID: 0}
+  dessertClip: {fileID: 0}
+  hotClip: {fileID: 0}
+  iceClip: {fileID: 0}
   menuModal: {fileID: 0}
+  multiSelect: {fileID: 0}
+  addCartButton: {fileID: 0}
+  payButton: {fileID: 0}
+  cardButton: {fileID: 0}
+  cashButton: {fileID: 0}
 --- !u!4 &1423010378
 Transform:
   m_ObjectHideFlags: 0
@@ -2490,7 +2501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1016.0377}
+  m_AnchoredPosition: {x: 0, y: 1524.0377}
   m_SizeDelta: {x: 837.222, y: 73.283}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1799519971

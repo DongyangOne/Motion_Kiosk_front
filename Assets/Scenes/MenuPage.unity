@@ -2632,6 +2632,8 @@ MonoBehaviour:
   message: {fileID: 1232515379}
   dropdown: {fileID: 1158202037}
   STT: {fileID: 1547315728}
+  cartModal: {fileID: 1054958299}
+  modal: {fileID: 163368168}
   uiModal: {fileID: 163368170}
   reAudio: {fileID: 1182774653}
   replay: {fileID: 8300000, guid: c1573bf5e7d811e428d7d24eab8d1a3f, type: 3}
@@ -2645,6 +2647,8 @@ MonoBehaviour:
   multiSelect: {fileID: 1397428419}
   addCartButton: {fileID: 936694566}
   payButton: {fileID: 1795834436}
+  cardButton: {fileID: 1131789340}
+  cashButton: {fileID: 353212552}
 --- !u!4 &421585848
 Transform:
   m_ObjectHideFlags: 0

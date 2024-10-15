@@ -16,6 +16,8 @@ namespace Samples.Whisper
         [SerializeField] private Text message;
         [SerializeField] private Dropdown dropdown;
         public GameObject STT;
+        public GameObject cartModal;
+        public GameObject modal;
         public UIModal uiModal;
         public AudioSource reAudio;
         public AudioClip replay;
@@ -27,7 +29,6 @@ namespace Samples.Whisper
         public AudioClip iceClip;
         public MenuModal menuModal;
         public UIMultiSelect multiSelect;
-        // public GameObject cartModal;
 
         [SerializeField] private Button addCartButton;
         [SerializeField] private Button payButton;
@@ -143,10 +144,21 @@ namespace Samples.Whisper
 
             // 카테고리 이동 명령어 처리
             CategoryManager categoryManager = FindObjectOfType<CategoryManager>();
+            if (command.Equals("접촉") || command.Equals("비접촉") || command.Contains("음성"))
+            {
+                SceneManager.LoadScene("SelectWhere");
+                return true;
+            }
+            if (command.Contains("매장") || command.Contains("포장"))
+            {
+                SceneManager.LoadScene("MenuPage");
+                return true;
+            }
             if (command.Contains("커피"))
             {
                 categoryManager.ShowCategory("coffee");
                 message.text = "커피 카테고리로 이동합니다.";
+                STT.SetActive(false);
                 reAudio.clip = coffeeClip;
                 reAudio.Play();
                 StartCoroutine(ActivateSTTAfterDelay(5f));
@@ -156,6 +168,7 @@ namespace Samples.Whisper
             {
                 categoryManager.ShowCategory("tea");
                 message.text = "차 카테고리로 이동합니다.";
+                STT.SetActive(false);
                 reAudio.clip = teaClip;
                 reAudio.Play();
                 StartCoroutine(ActivateSTTAfterDelay(5f));
@@ -165,6 +178,7 @@ namespace Samples.Whisper
             {
                 categoryManager.ShowCategory("noncoffee");
                 message.text = "논커피 카테고리로 이동합니다.";
+                STT.SetActive(false);
                 reAudio.clip = noncoffeeClip;
                 reAudio.Play();
                 StartCoroutine(ActivateSTTAfterDelay(5f));
@@ -174,22 +188,13 @@ namespace Samples.Whisper
             {
                 categoryManager.ShowCategory("dessert");
                 message.text = "디저트 카테고리로 이동합니다.";
+                STT.SetActive(false);
                 reAudio.clip = dessertClip;
                 reAudio.Play();
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
-            else if (command.Equals("접촉") || command.Equals("비접촉") || command.Contains("음성"))
-            {
-                SceneManager.LoadScene("SelectWhere");
-                return true;
-            }
-            else if (command.Contains("매장") || command.Contains("포장"))
-            {
-                SceneManager.LoadScene("MenuPage");
-                return true;
-            }
-            else if (command.Contains("핫"))
+            if (command.Contains("핫"))
             {
                 STT.SetActive(false);
                 multiSelect.OptionSelect(0);
@@ -217,7 +222,16 @@ namespace Samples.Whisper
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
-            if (command.Contains("결제") || (command.Contains("결재")))
+            else if (command.Contains("장바구니"))
+            {
+                modal.SetActive(true);
+                cartModal.SetActive(true);
+                message.text = "장바구니를 확인합니다.";
+                STT.SetActive(false);
+                StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
+            else if (command.Contains("결제") || (command.Contains("결재")))
             {
                 addCartButton.onClick.Invoke();
                 payButton.onClick.Invoke();
