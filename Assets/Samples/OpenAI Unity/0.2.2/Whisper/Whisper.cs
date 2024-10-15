@@ -27,9 +27,12 @@ namespace Samples.Whisper
         public AudioClip iceClip;
         public MenuModal menuModal;
         public UIMultiSelect multiSelect;
-        public GameObject cartModal;
+        // public GameObject cartModal;
 
         [SerializeField] private Button addCartButton;
+        [SerializeField] private Button payButton;
+        [SerializeField] private Button cardButton;
+        [SerializeField] private Button cashButton;
 
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -205,9 +208,32 @@ namespace Samples.Whisper
             {
                 addCartButton.onClick.Invoke();
                 message.text = "상품이 장바구니에 담겼습니다.";
-                return true;
                 STT.SetActive(false);
                 StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
+            if (command.Contains("결제") || (command.Contains("결재")))
+            {
+                payButton.onClick.Invoke();
+                message.text = "결제를 시작합니다.";
+                StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
+            else if (command.Contains("카드"))
+            {
+                cardButton.onClick.Invoke();
+                message.text = "카드로 결제합니다.";
+                STT.SetActive(false);
+                // StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
+            else if (command.Contains("현금"))
+            {
+                cashButton.onClick.Invoke();
+                message.text = "현금으로 결제합니다.";
+                STT.SetActive(false);
+                // StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
             }
             else
             {

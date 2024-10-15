@@ -2633,9 +2633,18 @@ MonoBehaviour:
   dropdown: {fileID: 1158202037}
   STT: {fileID: 1547315728}
   uiModal: {fileID: 163368170}
-  reAudio: {fileID: 0}
-  replay: {fileID: 0}
+  reAudio: {fileID: 1182774653}
+  replay: {fileID: 8300000, guid: c1573bf5e7d811e428d7d24eab8d1a3f, type: 3}
+  coffeeClip: {fileID: 8300000, guid: 09173d9ad7e69e9489b6b5d9153af907, type: 3}
+  teaClip: {fileID: 8300000, guid: d4d493dbdcdb6be458e3976d0f8d98d6, type: 3}
+  noncoffeeClip: {fileID: 8300000, guid: 3c3807a29a5db0b43bd926cf4c3e2bd2, type: 3}
+  dessertClip: {fileID: 8300000, guid: fc8c19569206c9644b042a73e698f9da, type: 3}
+  hotClip: {fileID: 8300000, guid: d01b02460a441b74baad5249ccf232b0, type: 3}
+  iceClip: {fileID: 8300000, guid: 2f7b9f10fd5166045803c425c01f0c0a, type: 3}
   menuModal: {fileID: 1495935622}
+  multiSelect: {fileID: 1397428419}
+  addCartButton: {fileID: 936694566}
+  payButton: {fileID: 1795834436}
 --- !u!4 &421585848
 Transform:
   m_ObjectHideFlags: 0
