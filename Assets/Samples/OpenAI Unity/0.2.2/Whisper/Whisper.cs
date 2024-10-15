@@ -204,7 +204,7 @@ namespace Samples.Whisper
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
-            else if (command.Contains("담기") || (command.Contains("닮기")))
+            if (command.Contains("담기") || (command.Contains("닮기")))
             {
                 addCartButton.onClick.Invoke();
                 message.text = "상품이 장바구니에 담겼습니다.";
@@ -214,12 +214,14 @@ namespace Samples.Whisper
             }
             if (command.Contains("결제") || (command.Contains("결재")))
             {
+                addCartButton.onClick.Invoke();
                 payButton.onClick.Invoke();
                 message.text = "결제를 시작합니다.";
+                STT.SetActive(false);
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
-            else if (command.Contains("카드"))
+            if (command.Contains("카드"))
             {
                 cardButton.onClick.Invoke();
                 message.text = "카드로 결제합니다.";
