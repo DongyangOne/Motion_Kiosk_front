@@ -53,12 +53,11 @@ public class MenuModal : MonoBehaviour
                 // Debug.LogError("MenuData is null 1");
                 return;
             }
-
-            Debug.Log(selectedOption);
             
             string selectedOption = multiSelect.GetSelected();
             cartModal.AddToCart(menuData.name, quantity, menuData.price, selectedOption, menuData.img);
             modal.CloseModal();
+            // Debug.Log(selectedOption);
         });
 
         payBtn.onClick.AddListener(() => {
