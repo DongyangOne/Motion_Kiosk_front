@@ -23,7 +23,10 @@ namespace Samples.Whisper
         public AudioClip teaClip;
         public AudioClip noncoffeeClip;
         public AudioClip dessertClip;
+        public AudioClip hotClip;
+        public AudioClip iceClip;
         public MenuModal menuModal;
+        public UIMultiSelect multiSelect;
 
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -41,7 +44,7 @@ namespace Samples.Whisper
             UpdateMessage(message.text);
             apiKey = LoadApiKey();
             openai = new OpenAIApi(apiKey);
-            LoadMenuData(); // 메뉴 데이터 로드
+            LoadMenuData();
 
             foreach (var device in Microphone.devices)
             {
@@ -92,15 +95,13 @@ namespace Samples.Whisper
             message.text = res.Text;
             recordButton.enabled = true;
 
-            // 음성 명령어 처리
             bool commandHandled = HandleVoiceCommand(res.Text);
 
-            // 음성 인식 실패 시 replay 클립 재생
             if (!commandHandled)
             {
                 reAudio.clip = replay;
                 reAudio.Play();
-                StartCoroutine(WaitForReplayEnd(replay.length)); // 코루틴 호출
+                StartCoroutine(WaitForReplayEnd(replay.length));
             }
 
             isRecording = false;
@@ -110,8 +111,8 @@ namespace Samples.Whisper
 
         private IEnumerator WaitForReplayEnd(float duration)
         {
-            yield return new WaitForSeconds(duration); // replay 클립 재생이 끝날 때까지 대기
-            StartRecording(); // 음성 인식 다시 시작
+            yield return new WaitForSeconds(duration);
+            StartRecording();
         }
 
         private bool HandleVoiceCommand(string command)
@@ -124,7 +125,8 @@ namespace Samples.Whisper
                     Debug.Log("Retrieved MenuData: " + menu);
                     menuModal.OpenModal(menu);
                     STT.SetActive(false);
-                    return true; // 명령어가 처리된 경우
+                    StartCoroutine(ActivateSTTAfterDelay(5f));
+                    return true;
                 }
             }
 
@@ -134,40 +136,36 @@ namespace Samples.Whisper
             {
                 categoryManager.ShowCategory("coffee");
                 message.text = "커피 카테고리로 이동합니다.";
-                STT.SetActive(false);
                 reAudio.clip = coffeeClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f)); // 5초 후 STT 활성화
+                StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
             else if (command.Contains("차"))
             {
                 categoryManager.ShowCategory("tea");
                 message.text = "차 카테고리로 이동합니다.";
-                STT.SetActive(false);
                 reAudio.clip = teaClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f)); // 5초 후 STT 활성화
+                StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
             else if (command.Contains("논커피"))
             {
                 categoryManager.ShowCategory("noncoffee");
                 message.text = "논커피 카테고리로 이동합니다.";
-                STT.SetActive(false);
                 reAudio.clip = noncoffeeClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f)); // 5초 후 STT 활성화
+                StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
             else if (command.Contains("디저트"))
             {
                 categoryManager.ShowCategory("dessert");
                 message.text = "디저트 카테고리로 이동합니다.";
-                STT.SetActive(false);
                 reAudio.clip = dessertClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f)); // 5초 후 STT 활성화
+                StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
             else if (command.Equals("접촉") || command.Equals("비접촉") || command.Contains("음성"))
@@ -180,22 +178,44 @@ namespace Samples.Whisper
                 SceneManager.LoadScene("MenuPage");
                 return true;
             }
+            else if (command.Contains("핫"))
+            {
+                STT.SetActive(false);
+                multiSelect.OptionSelect(0);
+                reAudio.clip = hotClip;
+                reAudio.Play();
+                message.text = "핫 음료 선택되었습니다.";
+                StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
+            else if (command.Contains("아이스"))
+            {
+                STT.SetActive(false);
+                multiSelect.OptionSelect(1);
+                reAudio.clip = iceClip;
+                reAudio.Play();
+                message.text = "아이스 음료 선택되었습니다.";
+                StartCoroutine(ActivateSTTAfterDelay(5f));
+                return true;
+            }
             else
             {
-                message.text = "다시 말해주세요."; // 음성 인식 실패 시 메시지 표시
+                message.text = "다시 말해주세요.";
                 STT.SetActive(true);
-                return false; // 명령어가 처리되지 않은 경우
+                return false;
             }
 
             STT.SetActive(false);
-            return false; // 명령어가 처리되지 않은 경우
+            return false;
         }
 
         private IEnumerator ActivateSTTAfterDelay(float delay)
         {
-            yield return new WaitForSeconds(delay); // 5초 대기
-            STT.SetActive(true); // STT 활성화
-            StartRecording(); // 음성 인식 시작
+            yield return new WaitForSeconds(delay);
+            STT.SetActive(true);
+            StartRecording();
+            yield return new WaitForSeconds(5f);
+            StartRecording();
         }
 
         private async void LoadMenuData()
@@ -262,6 +282,7 @@ namespace Samples.Whisper
         public string message;
         public List<MenuData> data;
     }
+
 
     [System.Serializable]
     public class ApiConfig

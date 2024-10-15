@@ -24,7 +24,7 @@ public class UIMultiSelect : MonoBehaviour, ModalReset {
         OptionSelect(0);
     }
 
-    private void OptionSelect(int index) {
+    public void OptionSelect(int index) {
         if (buttons == null || buttons.Count == 0) return;
         for (int i = 0; i < buttons.Count; i++) {
             Button button = buttons[i];
