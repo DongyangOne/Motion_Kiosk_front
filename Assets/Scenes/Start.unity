@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135232475}
   - component: {fileID: 135232476}
+  - component: {fileID: 135232477}
   m_Layer: 0
   m_Name: Click
   m_TagString: Untagged
@@ -164,6 +165,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c62e3c326cabef74c8059f1bd61035ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &135232477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 135232474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d4be5ea26d6c454792d3cb71a898530, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &266077138
@@ -632,6 +645,18 @@ MonoBehaviour:
       - m_Target: {fileID: 135232476}
         m_TargetAssemblyTypeName: Changes, Assembly-CSharp
         m_MethodName: onClickMotion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 135232477}
+        m_TargetAssemblyTypeName: run_python, Assembly-CSharp
+        m_MethodName: startMotion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
