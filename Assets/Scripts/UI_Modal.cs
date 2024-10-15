@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class UIModal : MonoBehaviour {
     public GameObject menuModal;
@@ -20,7 +21,7 @@ public class UIModal : MonoBehaviour {
     private string modalOption = "";
 
     private void Start() {
-        transform.gameObject.SetActive(false);
+        // transform.gameObject.SetActive(false);
     }
 
     public void MenuModal() {
@@ -78,6 +79,7 @@ public class UIModal : MonoBehaviour {
         CartModalFunc cartModalScript = cartModal.GetComponent<CartModalFunc>();
         cartModalScript.ResetCart();
         CloseModal();
+        SceneManager.LoadScene("Start");
     }
     // 모든 모달 끄기
     public void CloseAll() {
