@@ -27,6 +27,9 @@ namespace Samples.Whisper
         public AudioClip iceClip;
         public MenuModal menuModal;
         public UIMultiSelect multiSelect;
+        public GameObject cartModal;
+
+        [SerializeField] private Button addCartButton;
 
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -198,6 +201,14 @@ namespace Samples.Whisper
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
+            else if (command.Contains("담기") || (command.Contains("닮기")))
+            {
+                addCartButton.onClick.Invoke();
+                message.text = "상품이 장바구니에 담겼습니다.";
+                return true;
+                STT.SetActive(false);
+                StartCoroutine(ActivateSTTAfterDelay(5f));
+            }
             else
             {
                 message.text = "다시 말해주세요.";
@@ -282,7 +293,6 @@ namespace Samples.Whisper
         public string message;
         public List<MenuData> data;
     }
-
 
     [System.Serializable]
     public class ApiConfig
