@@ -12,6 +12,9 @@ UserSettings/
 # for VSCode
 .vscode
 
+# Ignore config files
+Assets/Resources/api_config.json
+
 ### for macOS ###
 .DS_Store
 .AppleDouble

@@ -6,13 +6,16 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Networking;
 
-
 public class UIModal : MonoBehaviour {
     public GameObject menuModal;
     public GameObject cartModal;
     public GameObject payModal;
     public GameObject cardModal;
     public GameObject completed;
+
+    public TextMeshProUGUI title;
+    public TextMeshProUGUI price;
+    public Image menuImage;
 
     private string modalOption = "";
 
@@ -25,7 +28,7 @@ public class UIModal : MonoBehaviour {
         transform.gameObject.SetActive(true);
         menuModal.SetActive(true);
     }
-    
+
     public void CartModal()
     {
         CloseAll();
@@ -44,7 +47,6 @@ public class UIModal : MonoBehaviour {
             CartModal();
         }
     }
-
     // 결제 방법 선택
     public void PaymentModal(string option, int totalPrice) {
         modalOption = option;
@@ -55,7 +57,6 @@ public class UIModal : MonoBehaviour {
         PaymentModal payModalScript = payModal.GetComponent<PaymentModal>();
         payModalScript.setPaymentTotalPrice(totalPrice);
     }
-    
     // 카드 선택
     public void CardModal()
     {
@@ -64,7 +65,6 @@ public class UIModal : MonoBehaviour {
         cardModal.SetActive(true);
         OpenPayComplete();
     }
-    
     // 주문 완료
     public void PayCompleted()
     {
@@ -77,13 +77,8 @@ public class UIModal : MonoBehaviour {
     public void ResetMain() {
         CartModalFunc cartModalScript = cartModal.GetComponent<CartModalFunc>();
         cartModalScript.ResetCart();
-        
         CloseModal();
     }
-
-
-
-
     // 모든 모달 끄기
     public void CloseAll() {
         menuModal.SetActive(false);
@@ -111,5 +106,35 @@ public class UIModal : MonoBehaviour {
     public void ReturnMain() {
         StartCoroutine(ExecuteAfterDelay(ResetMain));
     }
-    
+
+    public void UpdateMenuData(MenuData menuData)
+    {
+        title.text = menuData.name; //메뉴 이름
+        price.text = string.Format("{0:n0}원", menuData.price);
+        LoadImage(menuData.img); //이미지 로드
+    }
+
+    private void LoadImage(string url)
+    {
+        StartCoroutine(LoadImageCoroutine(url));
+    }
+
+    private IEnumerator LoadImageCoroutine(string url)
+    {
+        using (UnityWebRequest www = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError(www.error);
+            }
+            else
+            {
+                Texture2D texture = DownloadHandlerTexture.GetContent(www);
+                menuImage.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+                menuImage.SetNativeSize();
+            }
+        }
+    }
 }
