@@ -18,7 +18,7 @@ namespace Samples.Whisper
         public UIModal uiModal;
         public AudioSource reAudio;
         public AudioClip replay;
-        public MenuModal menuModal; // MenuModal 인스턴스
+        public MenuModal menuModal;
 
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -29,7 +29,6 @@ namespace Samples.Whisper
         private OpenAIApi openai;
         private string apiKey;
 
-        // 메뉴 데이터를 저장할 리스트
         private List<MenuData> menuDataList;
 
         private void Start()
@@ -88,49 +87,60 @@ namespace Samples.Whisper
             message.text = res.Text;
             recordButton.enabled = true;
 
-            // Handle voice command
             HandleVoiceCommand(res.Text);
 
-            // 음성 인식 완료 후 초기화
-            isRecording = false; // 녹음 상태 초기화
-            time = 0; // 타이머 초기화
-            progressBar.fillAmount = 0; // 진행 바 초기화
+            isRecording = false;
+            time = 0; 
+            progressBar.fillAmount = 0;
         }
 
         private void HandleVoiceCommand(string command)
         {
-            // 메뉴 리스트를 순회하며 음성 인식된 명령어에 해당하는 메뉴가 있는지 확인
+            command = command.ToLower();
             foreach (var menu in menuDataList)
             {
-                if (command.Contains(menu.name))
+                if (command.Contains(menu.name.ToLower()))
                 {
-                    Debug.Log("Retrieved MenuData: " + menu); // 디버깅 로그
-                    menuModal.OpenModal(menu); // 해당 메뉴 데이터로 모달 열기
+                    Debug.Log("Retrieved MenuData: " + menu);
+                    menuModal.OpenModal(menu);
                     STT.SetActive(false);
-                    return; // 한번 찾으면 종료
+                    return;
                 }
             }
-            Debug.LogWarning("No matching menu item found for command: " + command);
-            STT.SetActive(false);
-        }
 
-        private MenuData GetMenuData(string menuName)
-        {
-            foreach (var menu in menuDataList)
+            // 카테고리 이동 명령어 처리
+            CategoryManager categoryManager = FindObjectOfType<CategoryManager>();
+            if (command.Contains("커피"))
             {
-                if (menu.name == menuName)
-                {
-                    return menu; // 올바른 메뉴 데이터 반환
-                }
+                categoryManager.ShowCategory("coffee");
+                message.text = "커피 카테고리로 이동합니다.";
             }
-            Debug.LogWarning($"Menu item '{menuName}' not found.");
-            return null; // 메뉴가 없을 경우 null 반환
+            else if (command.Contains("차"))
+            {
+                categoryManager.ShowCategory("tea");
+                message.text = "차 카테고리로 이동합니다.";
+            }
+            else if (command.Contains("논커피"))
+            {
+                categoryManager.ShowCategory("noncoffee");
+                message.text = "논커피 카테고리로 이동합니다.";
+            }
+            else if (command.Contains("디저트"))
+            {
+                categoryManager.ShowCategory("dessert");
+                message.text = "디저트 카테고리로 이동합니다.";
+            }
+            else
+            {
+                message.text = "다시 말해주세요.";
+            }
+
+            STT.SetActive(false);
         }
 
         private async void LoadMenuData()
         {
-            // API를 통해 메뉴 데이터를 로드하는 로직
-            string apiUrl = "http://116.39.208.72:8022/api2/menu"; // 실제 API URL로 변경하세요
+            string apiUrl = "http://116.39.208.72:8022/api2/menu";
             using (UnityWebRequest webRequest = UnityWebRequest.Get(apiUrl))
             {
                 webRequest.SetRequestHeader("Authorization", "Bearer " + PlayerPrefs.GetString("token"));
@@ -147,9 +157,8 @@ namespace Samples.Whisper
                 }
                 else
                 {
-                    // JSON 파싱
                     ApiResponse apiResponse = JsonUtility.FromJson<ApiResponse>(webRequest.downloadHandler.text);
-                    menuDataList = apiResponse.data; // 메뉴 데이터를 리스트에 저장
+                    menuDataList = apiResponse.data;
                 }
             }
         }
