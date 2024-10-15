@@ -2635,7 +2635,7 @@ MonoBehaviour:
   uiModal: {fileID: 163368170}
   reAudio: {fileID: 0}
   replay: {fileID: 0}
-  menuModal: {fileID: 0}
+  menuModal: {fileID: 1495935622}
 --- !u!4 &421585848
 Transform:
   m_ObjectHideFlags: 0
@@ -3300,6 +3300,7 @@ GameObject:
   - component: {fileID: 575124081}
   - component: {fileID: 575124085}
   - component: {fileID: 575124086}
+  - component: {fileID: 575124087}
   m_Layer: 5
   m_Name: CategorySlide(DataManage)
   m_TagString: Untagged
@@ -3441,6 +3442,19 @@ MonoBehaviour:
   menuPage: {fileID: 1380793855820105964, guid: 24f1c4b607acd464f88ac4bf70ef49da, type: 3}
   menuCell: {fileID: 4355031664471987873, guid: 5a9ebaade53db4b1e8127db1bdcc7ef0, type: 3}
   emptyMenuCell: {fileID: 4355031664471987873, guid: 1c1293be1665a4641bd54fa2888aaeea, type: 3}
+--- !u!114 &575124087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575124079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b976da103b282fd418d63c0fe07369ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  categoryContainer: {fileID: 4923462583129930231}
 --- !u!1 &586177271
 GameObject:
   m_ObjectHideFlags: 0
