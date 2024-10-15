@@ -58,6 +58,11 @@ namespace Samples.Whisper
             }
             recordButton.onClick.AddListener(StartRecording);
             STT.SetActive(false);
+            if(SceneManager.GetActiveScene().name == "Start")
+            {
+                STT.SetActive(true);
+                StartRecording();
+            }
             dropdown.onValueChanged.AddListener(ChangeMicrophone);
 
             var index = PlayerPrefs.GetInt("user-mic-device-index");
