@@ -1,25 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class SecondScene : MonoBehaviour
+public class SequentialComponentController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject[] components;  // 순차적으로 켜고 끌 컴포넌트들
+    public string nextSceneName;     // 마지막 컴포넌트가 끝난 후 넘어갈 씬 이름
+
     void Start()
-    { 
-        StartCoroutine(MoveToNextSceneAfterDelay(3));
+    {
+        foreach (GameObject component in components)
+        {
+            component.SetActive(false);  // 모든 컴포넌트를 시작 시 비활성화
+        }
+        // 컴포넌트를 순차적으로 켜고 끄는 코루틴 실행
+        StartCoroutine(ActivateComponentsSequentially());
     }
 
-    private IEnumerator MoveToNextSceneAfterDelay(float delay)
+    // 컴포넌트들을 순차적으로 활성화/비활성화하는 코루틴
+    IEnumerator ActivateComponentsSequentially()
     {
-        yield return new WaitForSeconds(delay);  // 지정된 시간만큼 대기
-        SceneManager.LoadScene("SecondScene1");  // 3초 후에 다음 씬으로 전환
-    }
+        foreach (GameObject component in components)
+        {
+            // 현재 컴포넌트를 활성화
+            component.SetActive(true);
+            Debug.Log(component.name + " 활성화됨");
 
-    void Update()
-    {
-        
+            // 3초 대기
+            yield return new WaitForSeconds(3f);
+
+            // 현재 컴포넌트를 비활성화
+            component.SetActive(false);
+            Debug.Log(component.name + " 비활성화됨");
+        }
+
+        // 모든 컴포넌트가 끝난 후 씬 전환
+        SceneManager.LoadScene(nextSceneName);
     }
 }
