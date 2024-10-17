@@ -1219,7 +1219,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135232476}
         m_TargetAssemblyTypeName: Changes, Assembly-CSharp
-        m_MethodName: moveManuPage
+        m_MethodName: moveSpeakMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2281,6 +2281,8 @@ MonoBehaviour:
   message: {fileID: 410740238}
   dropdown: {fileID: 1134519119}
   STT: {fileID: 2006190014}
+  cartModal: {fileID: 0}
+  modal: {fileID: 0}
   uiModal: {fileID: 0}
   reAudio: {fileID: 1896510474}
   replay: {fileID: 8300000, guid: c1573bf5e7d811e428d7d24eab8d1a3f, type: 3}
@@ -2290,6 +2292,12 @@ MonoBehaviour:
   dessertClip: {fileID: 0}
   hotClip: {fileID: 0}
   iceClip: {fileID: 0}
+  americanoClip: {fileID: 0}
+  cafeLatteClip: {fileID: 0}
+  tomatoClip: {fileID: 0}
+  milkTeaClip: {fileID: 0}
+  saltBreadClip: {fileID: 0}
+  paymentClip: {fileID: 0}
   menuModal: {fileID: 0}
   multiSelect: {fileID: 0}
   addCartButton: {fileID: 0}
@@ -2627,7 +2635,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 135232476}
         m_TargetAssemblyTypeName: Changes, Assembly-CSharp
-        m_MethodName: moveManuPage
+        m_MethodName: moveSpeakMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
