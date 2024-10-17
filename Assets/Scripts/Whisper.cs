@@ -15,6 +15,7 @@ namespace Samples.Whisper
         [SerializeField] private Image progressBar;
         [SerializeField] private Text message;
         [SerializeField] private Dropdown dropdown;
+        private bool isModalOpen = false;
         public GameObject STT;
         public GameObject cartModal;
         public GameObject modal;
@@ -27,6 +28,12 @@ namespace Samples.Whisper
         public AudioClip dessertClip;
         public AudioClip hotClip;
         public AudioClip iceClip;
+        public AudioClip americanoClip;
+        public AudioClip cafeLatteClip;
+        public AudioClip tomatoClip;
+        public AudioClip milkTeaClip;
+        public AudioClip saltBreadClip;
+        public AudioClip paymentClip;
         public MenuModal menuModal;
         public UIMultiSelect multiSelect;
 
@@ -130,14 +137,53 @@ namespace Samples.Whisper
         private bool HandleVoiceCommand(string command)
         {
             command = command.ToLower();
+
+            if (isModalOpen && command.Contains("뒤로"))
+            {
+                CloseModal();
+                return true;
+            }
+
             foreach (var menu in menuDataList)
             {
                 if (command.Contains(menu.name.ToLower()))
                 {
                     Debug.Log("Retrieved MenuData: " + menu);
                     menuModal.OpenModal(menu);
+                    isModalOpen = true;
                     STT.SetActive(false);
                     StartCoroutine(ActivateSTTAfterDelay(5f));
+
+                    if (menu.name.ToLower() == "아메리카노")
+                    {
+                        reAudio.clip = americanoClip;
+                        reAudio.Play();
+                        message.text = "아메리카노 선택하셨습니다.";
+                    }
+                    else if (menu.name.ToLower() == "카페라떼")
+                    {
+                        reAudio.clip = cafeLatteClip;
+                        reAudio.Play();
+                        message.text = "카페라데 선택하셨습니다.";
+                    }
+                    else if (menu.name.ToLower() == "밀크티")
+                    {
+                        reAudio.clip = milkTeaClip;
+                        reAudio.Play();
+                        message.text = "밀크티 선택하셨습니다.";
+                    }
+                    else if (menu.name.ToLower() == "토마토 주스")
+                    {
+                        reAudio.clip = tomatoClip;
+                        reAudio.Play();
+                        message.text = "토마토 주스 선택하셨습니다.";
+                    }
+                    else if (menu.name.ToLower() == "소금빵")
+                    {
+                        reAudio.clip = saltBreadClip;
+                        reAudio.Play();
+                        message.text = "소금빵 선택하셨습니다.";
+                    }
                     return true;
                 }
             }
@@ -231,13 +277,15 @@ namespace Samples.Whisper
                 StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
-            else if (command.Contains("결제") || (command.Contains("결재")))
+            else if (command.Equals("결제") || (command.Equals("결재") ||(command.Equals("결제하기") || (command.Equals("결재하기")))))
             {
                 addCartButton.onClick.Invoke();
                 payButton.onClick.Invoke();
+                reAudio.clip = paymentClip;
+                reAudio.Play();
                 message.text = "결제를 시작합니다.";
                 STT.SetActive(false);
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(7f));
                 return true;
             }
             if (command.Contains("카드"))
@@ -267,6 +315,20 @@ namespace Samples.Whisper
             return false;
         }
 
+        private void CloseModal()
+        {
+            modal.SetActive(false);
+            cartModal.SetActive(false);
+            isModalOpen = false;
+            STT.SetActive(false);
+            
+            // if (menuModal != null)
+            // {
+            //     menuModal.CloseModal();
+            // }
+
+            StartCoroutine(ActivateSTTAfterDelay(3f));
+        }
         private IEnumerator ActivateSTTAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
