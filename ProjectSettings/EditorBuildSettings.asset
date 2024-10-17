@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuPage.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/MenuPage2.unity
+    guid: 172c5acb913cf4dd6b44b3239ff8a662
+  - enabled: 1
     path: Assets/Scenes/SelectWhere.unity
     guid: dab5848343687426385394452023b077
   - enabled: 1

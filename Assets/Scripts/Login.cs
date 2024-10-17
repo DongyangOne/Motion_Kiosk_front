@@ -51,6 +51,8 @@ public class Login : MonoBehaviour
         inputID.onValueChanged.AddListener(OnChangeID);
         inputPW.onValueChanged.AddListener(OnChangePW);
 
+
+
     }
 
 
@@ -109,7 +111,6 @@ public class Login : MonoBehaviour
                 {
                     PlayerPrefs.SetString("token", loginResponse.data.token);
                     Debug.Log("로그인 성공");
-                    PlayerPrefs.SetInt("isLoggedIn", 1);
                     SceneManager.LoadScene("Start");
 
                 }

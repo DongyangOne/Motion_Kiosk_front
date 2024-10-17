@@ -15,7 +15,7 @@ public class ThirdScene : MonoBehaviour
     private IEnumerator MoveToNextSceneAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);  // 지정된 시간만큼 대기
-        SceneManager.LoadScene("MenuPage1");  // 3초 후에 다음 씬으로 전환
+        SceneManager.LoadScene("MenuPage2");  // 3초 후에 다음 씬으로 전환
     }
     // Update is called once per frame
     void Update()
