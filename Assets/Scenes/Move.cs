@@ -19,10 +19,15 @@ public class Changes : MonoBehaviour
     }
     public void onClickSpeak()
     {
-        SceneManager.LoadScene("SelectWhere");
+        SceneManager.LoadScene("SelectWhere1");
     }
 
     public void moveManuPage()
+    {
+        SceneManager.LoadScene("MenuPage1");
+    }
+
+    public void moveSpeakMenu()
     {
         SceneManager.LoadScene("MenuPage");
     }

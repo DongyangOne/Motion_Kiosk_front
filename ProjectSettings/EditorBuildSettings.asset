@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectWhere.unity
     guid: dab5848343687426385394452023b077
   - enabled: 1
+    path: Assets/Scenes/SelectWhere1.unity
+    guid: b6237c4fff63fb149a16ccaa327d02e0
+  - enabled: 1
+    path: Assets/Scenes/MenuPage1.unity
+    guid: d796aaa2a9507bd4685dc8250430b73b
+  - enabled: 1
     path: Assets/Scenes/SecondScene.unity
     guid: 6e2b034b76e813941a299faca533dfe3
   - enabled: 1
