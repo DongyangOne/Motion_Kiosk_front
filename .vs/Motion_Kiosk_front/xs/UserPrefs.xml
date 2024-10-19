@@ -1,26 +1,26 @@
 ﻿<Properties StartupConfiguration="{36B178E9-A3A8-F2D2-6AE5-04BC648FEAF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RunPython.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Fixed.cs">
     <Files>
       <File FileName="Assets/Scenes/Move.cs" Line="32" Column="44" />
-      <File FileName="Assets/Scripts/ThirdScene.cs" />
       <File FileName="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" />
       <File FileName="Assets/Scenes/ModalReset.cs" />
-      <File FileName="Assets/Scripts/Login.cs" />
       <File FileName="Assets/Scripts/CategoryDataManager.cs" />
       <File FileName="Assets/Scripts/SecondScene.cs" />
-      <File FileName="Assets/Scripts/RunPython.cs" Line="33" Column="6" />
+      <File FileName="Assets/Scripts/RunPython.cs" Line="19" Column="83" />
       <File FileName="Assets/Scripts/LogoButton.cs" />
-      <File FileName="Assets/Scripts/ProductButton.cs" />
       <File FileName="Assets/Scripts/Amount.cs" />
+      <File FileName="Assets/Scripts/Fixed.cs" Line="32" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Motion_Kiosk_front" expanded="True">
-            <Node name="Assets" expanded="True" selected="True">
+            <Node name="Assets" expanded="True">
               <Node name="Resources" expanded="True" />
               <Node name="Scenes" expanded="True" />
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="Fixed.cs" selected="True" />
+              </Node>
               <Node name="Settings" expanded="True" />
             </Node>
           </Node>
