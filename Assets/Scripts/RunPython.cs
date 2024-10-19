@@ -16,8 +16,10 @@ public class RunPython : MonoBehaviour
         if (psi == null || psi.HasExited)  // 프로세스가 종료되었거나 null일 때만 실행
         {
             psi = new Process();
-            psi.StartInfo.FileName = "/usr/bin/python3";  // 시스템에 맞게 경로 설정
-            string scriptPath = Application.dataPath + "/Scripts/Python/test4.py";
+            psi.StartInfo.FileName = "C:/Users/user/AppData/Local/Programs/Python/Python311";
+            //psi.StartInfo.FileName = "/usr/bin/python3";  // 시스템에 맞게 경로 설정
+            //string scriptPath = "/Users/choehyelim/Documents/DMU/ONE/Python/test4.py";
+            string scriptPath = "C:/Users/user/Desktop/Python/test4.py";
             psi.StartInfo.Arguments = scriptPath;
 
             psi.Start();
