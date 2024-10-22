@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{36B178E9-A3A8-F2D2-6AE5-04BC648FEAF2}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Fixed.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/RunPython.cs">
     <Files>
       <File FileName="Assets/Scenes/Move.cs" Line="32" Column="44" />
       <File FileName="Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" />
       <File FileName="Assets/Scenes/ModalReset.cs" />
       <File FileName="Assets/Scripts/CategoryDataManager.cs" />
       <File FileName="Assets/Scripts/SecondScene.cs" />
-      <File FileName="Assets/Scripts/RunPython.cs" Line="19" Column="83" />
+      <File FileName="Assets/Scripts/RunPython.cs" Line="30" Column="58" />
       <File FileName="Assets/Scripts/LogoButton.cs" />
       <File FileName="Assets/Scripts/Amount.cs" />
       <File FileName="Assets/Scripts/Fixed.cs" Line="32" Column="2" />
@@ -17,10 +17,10 @@
           <Node name="Motion_Kiosk_front" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Resources" expanded="True" />
-              <Node name="Scenes" expanded="True" />
-              <Node name="Scripts" expanded="True">
-                <Node name="Fixed.cs" selected="True" />
+              <Node name="Scenes" expanded="True">
+                <Node name="Move.cs" selected="True" />
               </Node>
+              <Node name="Scripts" expanded="True" />
               <Node name="Settings" expanded="True" />
             </Node>
           </Node>
@@ -30,7 +30,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="f84d87d8-aae0-4b23-b80b-06d91f23ae19" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="906ad774-790f-4f25-8330-f952f5673633" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
