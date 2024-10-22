@@ -24,12 +24,12 @@ public class Changes : MonoBehaviour
 
     public void moveManuPage()
     {
-        SceneManager.LoadScene("MenuPage1");
+        SceneManager.LoadScene("MenuPageTouch");
     }
 
     public void moveSpeakMenu()
     {
-        SceneManager.LoadScene("MenuPage");
+        SceneManager.LoadScene("MenuPageSpeak");
     }
    
 

@@ -12,10 +12,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Start.unity
     guid: 5474c9407c055bc4a9ddf1af856a0341
   - enabled: 1
-    path: Assets/Scenes/MenuPage.unity
+    path: Assets/Scenes/MenuPageSpeak.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/MenuPage2.unity
+    path: Assets/Scenes/MenuPageMotion.unity
     guid: 172c5acb913cf4dd6b44b3239ff8a662
   - enabled: 1
     path: Assets/Scenes/SelectWhere.unity
@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SelectWhere1.unity
     guid: b6237c4fff63fb149a16ccaa327d02e0
   - enabled: 1
-    path: Assets/Scenes/MenuPage1.unity
+    path: Assets/Scenes/MenuPageTouch.unity
     guid: d796aaa2a9507bd4685dc8250430b73b
   - enabled: 1
     path: Assets/Scenes/SecondScene.unity
