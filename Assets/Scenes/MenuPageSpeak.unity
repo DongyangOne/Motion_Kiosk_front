@@ -2649,6 +2649,7 @@ MonoBehaviour:
   milkTeaClip: {fileID: 8300000, guid: 5583be1b2997afc43a1c7d8173db00bd, type: 3}
   saltBreadClip: {fileID: 8300000, guid: 7e103b7c9b2743349826d73a6862ece7, type: 3}
   paymentClip: {fileID: 8300000, guid: 667a6d4fb4232f748ab4be240709bcc4, type: 3}
+  choiceClip: {fileID: 8300000, guid: 11361bc17aeaea146b186fe35f122eeb, type: 3}
   menuModal: {fileID: 1495935622}
   multiSelect: {fileID: 1397428419}
   addCartButton: {fileID: 936694566}
@@ -7015,7 +7016,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d561e1719aba8314c956c77beb3334ca, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5dbeb5a85c559124ea7d418cb3701704, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -10362,7 +10363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160.49998, y: -35}
+  m_AnchoredPosition: {x: 160.5, y: -35}
   m_SizeDelta: {x: 82.9487, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1973529621

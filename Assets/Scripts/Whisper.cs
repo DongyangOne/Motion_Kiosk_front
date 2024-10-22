@@ -19,6 +19,7 @@ namespace Samples.Whisper
         public GameObject STT;
         public GameObject cartModal;
         public GameObject modal;
+        public GameObject paymentModal;
         public UIModal uiModal;
         public AudioSource reAudio;
         public AudioClip replay;
@@ -34,6 +35,8 @@ namespace Samples.Whisper
         public AudioClip milkTeaClip;
         public AudioClip saltBreadClip;
         public AudioClip paymentClip;
+        public AudioClip choiceClip;
+        public AudioClip cartClip;
         public MenuModal menuModal;
         public UIMultiSelect multiSelect;
 
@@ -43,7 +46,7 @@ namespace Samples.Whisper
         [SerializeField] private Button cashButton;
 
         private readonly string fileName = "output.wav";
-        private readonly int duration = 5;
+        private readonly int duration = 3;
 
         private AudioClip clip;
         private bool isRecording;
@@ -111,18 +114,28 @@ namespace Samples.Whisper
             var res = await openai.CreateAudioTranscription(req);
 
             progressBar.fillAmount = 0;
-            message.text = res.Text;
-            recordButton.enabled = true;
 
-            bool commandHandled = HandleVoiceCommand(res.Text);
-
-            if (!commandHandled)
+            if (string.IsNullOrWhiteSpace(res.Text) || res.Text.ToLower().Contains("시청"))
             {
                 reAudio.clip = replay;
                 reAudio.Play();
-                StartCoroutine(WaitForReplayEnd(replay.length));
+                message.text = "아무 말도 하지 않으셨습니다. 다시 시도해주세요.";
+                StartCoroutine(ActivateSTTAfterDelay(3f));
+            }
+            else
+            {
+                message.text = res.Text;
+                bool commandHandled = HandleVoiceCommand(res.Text);
+
+                if (!commandHandled)
+                {
+                    reAudio.clip = replay;
+                    reAudio.Play();
+                    StartCoroutine(WaitForReplayEnd(replay.length));
+                }
             }
 
+            recordButton.enabled = true;
             isRecording = false;
             time = 0; 
             progressBar.fillAmount = 0;
@@ -137,6 +150,7 @@ namespace Samples.Whisper
         private bool HandleVoiceCommand(string command)
         {
             command = command.ToLower();
+            string recognizedText = "(인식된 단어 : " + command + ")";
 
             if (isModalOpen && command.Contains("뒤로"))
             {
@@ -152,37 +166,37 @@ namespace Samples.Whisper
                     menuModal.OpenModal(menu);
                     isModalOpen = true;
                     STT.SetActive(false);
-                    StartCoroutine(ActivateSTTAfterDelay(5f));
+                    StartCoroutine(ActivateSTTAfterDelay(3f));
 
                     if (menu.name.ToLower() == "아메리카노")
                     {
                         reAudio.clip = americanoClip;
                         reAudio.Play();
-                        message.text = "아메리카노 선택하셨습니다.";
+                        message.text = "아메리카노 선택하셨습니다.\n" + recognizedText;
                     }
                     else if (menu.name.ToLower() == "카페라떼")
                     {
                         reAudio.clip = cafeLatteClip;
                         reAudio.Play();
-                        message.text = "카페라데 선택하셨습니다.";
+                        message.text = "카페라떼 선택하셨습니다.\n" + recognizedText;
                     }
                     else if (menu.name.ToLower() == "밀크티")
                     {
                         reAudio.clip = milkTeaClip;
                         reAudio.Play();
-                        message.text = "밀크티 선택하셨습니다.";
+                        message.text = "밀크티 선택하셨습니다.\n" + recognizedText;
                     }
                     else if (menu.name.ToLower() == "토마토 주스")
                     {
                         reAudio.clip = tomatoClip;
                         reAudio.Play();
-                        message.text = "토마토 주스 선택하셨습니다.";
+                        message.text = "토마토 주스 선택하셨습니다.\n" + recognizedText;
                     }
                     else if (menu.name.ToLower() == "소금빵")
                     {
                         reAudio.clip = saltBreadClip;
                         reAudio.Play();
-                        message.text = "소금빵 선택하셨습니다.";
+                        message.text = "소금빵 선택하셨습니다.\n" + recognizedText;
                     }
                     return true;
                 }
@@ -204,41 +218,41 @@ namespace Samples.Whisper
             if (command.Contains("커피"))
             {
                 categoryManager.ShowCategory("coffee");
-                message.text = "커피 카테고리로 이동합니다.";
+                message.text = "커피 카테고리로 이동합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 reAudio.clip = coffeeClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
             else if (command.Contains("차"))
             {
                 categoryManager.ShowCategory("tea");
-                message.text = "차 카테고리로 이동합니다.";
+                message.text = "차 카테고리로 이동합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 reAudio.clip = teaClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
             else if (command.Contains("논커피"))
             {
                 categoryManager.ShowCategory("noncoffee");
-                message.text = "논커피 카테고리로 이동합니다.";
+                message.text = "논커피 카테고리로 이동합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 reAudio.clip = noncoffeeClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
             else if (command.Contains("디저트"))
             {
                 categoryManager.ShowCategory("dessert");
-                message.text = "디저트 카테고리로 이동합니다.";
+                message.text = "디저트 카테고리로 이동합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 reAudio.clip = dessertClip;
                 reAudio.Play();
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
             if (command.Contains("핫"))
@@ -247,44 +261,49 @@ namespace Samples.Whisper
                 multiSelect.OptionSelect(0);
                 reAudio.clip = hotClip;
                 reAudio.Play();
-                message.text = "핫 음료 선택되었습니다.";
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                message.text = "핫 음료 선택되었습니다.\n" + recognizedText;
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
-            else if (command.Contains("아이스"))
+            else if (command.Contains("아이스") || (command.Contains("아이쓰") || (command.Contains("하이스")| (command.Contains("하이쓰")))))
             {
                 STT.SetActive(false);
                 multiSelect.OptionSelect(1);
                 reAudio.clip = iceClip;
                 reAudio.Play();
-                message.text = "아이스 음료 선택되었습니다.";
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                message.text = "아이스 음료 선택되었습니다.\n" + recognizedText;
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
-            if (command.Contains("담기") || (command.Contains("닮기")))
+            // if (command.Contains("담기") || (command.Contains("닮기") || (command.Contains("탐기")|| (command.Contains("밤기")|| (command.Contains("참기"))))))
+            if (command.Contains("선택"))
             {
                 addCartButton.onClick.Invoke();
                 message.text = "상품이 장바구니에 담겼습니다.";
                 STT.SetActive(false);
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                reAudio.clip = choiceClip;
+                reAudio.Play();
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
             else if (command.Contains("장바구니"))
             {
                 modal.SetActive(true);
                 cartModal.SetActive(true);
-                message.text = "장바구니를 확인합니다.";
+                message.text = "장바구니를 확인합니다.\n" + recognizedText;
+                reAudio.clip = cartClip;
+                reAudio.Play();
                 STT.SetActive(false);
-                StartCoroutine(ActivateSTTAfterDelay(5f));
+                StartCoroutine(ActivateSTTAfterDelay(3f));
                 return true;
             }
-            else if (command.Equals("결제") || (command.Equals("결재") ||(command.Equals("결제하기") || (command.Equals("결재하기")))))
+            else if (command.Contains("결제") || (command.Contains("결재")))
             {
                 addCartButton.onClick.Invoke();
                 payButton.onClick.Invoke();
                 reAudio.clip = paymentClip;
                 reAudio.Play();
-                message.text = "결제를 시작합니다.";
+                message.text = "결제를 시작합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 StartCoroutine(ActivateSTTAfterDelay(7f));
                 return true;
@@ -292,7 +311,7 @@ namespace Samples.Whisper
             if (command.Contains("카드"))
             {
                 cardButton.onClick.Invoke();
-                message.text = "카드로 결제합니다.";
+                message.text = "카드로 결제합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 // StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
@@ -300,16 +319,16 @@ namespace Samples.Whisper
             else if (command.Contains("현금"))
             {
                 cashButton.onClick.Invoke();
-                message.text = "현금으로 결제합니다.";
+                message.text = "현금으로 결제합니다.\n" + recognizedText;
                 STT.SetActive(false);
                 // StartCoroutine(ActivateSTTAfterDelay(5f));
                 return true;
             }
             else
             {
-                message.text = "다시 말해주세요.";
-                STT.SetActive(true);
-                return false;
+            message.text = "다시 말해주세요.\n(인식된 단어: " + command + ")";
+            STT.SetActive(true);
+            return false;
             }
 
             STT.SetActive(false);
@@ -321,6 +340,7 @@ namespace Samples.Whisper
             modal.SetActive(false);
             cartModal.SetActive(false);
             isModalOpen = false;
+            paymentModal.SetActive(false);
             STT.SetActive(false);
             
             // if (menuModal != null)
@@ -335,7 +355,7 @@ namespace Samples.Whisper
             yield return new WaitForSeconds(delay);
             STT.SetActive(true);
             StartRecording();
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             StartRecording();
         }
 

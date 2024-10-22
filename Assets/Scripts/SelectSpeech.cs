@@ -20,7 +20,7 @@ public class SelectSpeech : MonoBehaviour
             StartScene();
         }
 
-        if(SceneManager.GetActiveScene().name == "MenuPage")
+        if(SceneManager.GetActiveScene().name == "MenuPageSpeak")
         {
             StartScene();
         }
