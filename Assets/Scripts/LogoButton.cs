@@ -9,7 +9,7 @@ public class LogoButton : MonoBehaviour {
         btn.onClick.AddListener(() => {
             
             modal.ResetMain();
-            SceneManager.LoadScene("Login");
+            SceneManager.LoadScene("Start");
         });
     }
 }

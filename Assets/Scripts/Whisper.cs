@@ -197,7 +197,8 @@ namespace Samples.Whisper
             }
             if (command.Contains("매장") || command.Contains("포장"))
             {
-                SceneManager.LoadScene("MenuPage");
+                // 모션으로 안가고 터치로 가게함
+                SceneManager.LoadScene("MenuPageTouch");
                 return true;
             }
             if (command.Contains("커피"))
